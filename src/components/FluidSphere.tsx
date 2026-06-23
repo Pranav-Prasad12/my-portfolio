@@ -5,31 +5,25 @@ import { MeshDistortMaterial, Sphere, Float } from "@react-three/drei";
 export const FluidSphere = () => {
   return (
     <div className="w-[400px] h-[400px] md:w-[500px] md:h-[500px] relative z-10 cursor-grab active:cursor-grabbing">
-      {/* The Canvas creates a 3D scene in the browser */}
       <Canvas camera={{ position: [0, 0, 3] }}>
         
-        {/* Lighting to make the sphere look glossy and metallic */}
-        <ambientLight intensity={0.8} />
-        <directionalLight position={[2, 2, 5]} intensity={2} color="#ffffff" />
-        <directionalLight position={[-2, -2, -5]} intensity={5} color="#4338ca" /> {/* Indigo backglow */}
+        {/* Pumped up the lighting so the metal has sharp, bright reflections */}
+        <ambientLight intensity={1.5} />
+        <directionalLight position={[5, 5, 5]} intensity={4} color="#ffffff" />
+        {/* A strong bright blue/indigo light hitting it from the bottom left */}
+        <directionalLight position={[-5, -5, -5]} intensity={8} color="#4f46e5" /> 
         
-        {/* Float makes the object hover smoothly up and down */}
         <Float speed={2} rotationIntensity={1.5} floatIntensity={2}>
-          
-          {/* The Sphere geometry */}
           <Sphere args={[1, 100, 100]} scale={1.2}>
-            
-            {/* The magic material that makes it look like liquid */}
             <MeshDistortMaterial
-              color="#000000"        // Black base color
-              emissive="#111111"     // Slight glow
-              distort={0.4}          // How wobbly it gets
-              speed={2.5}            // How fast the liquid morphs
-              roughness={0.1}        // Super glossy
-              metalness={1}          // Highly metallic reflections
+              color="#d1d5db"        // Changed from Black to bright Silver
+              emissive="#000000"     // Removed the artificial glow to let the lights work
+              distort={0.4}          
+              speed={2.5}            
+              roughness={0.05}       // Made it ultra-smooth/glossy
+              metalness={1}          // Maximum metallic reflection
             />
           </Sphere>
-          
         </Float>
       </Canvas>
     </div>
