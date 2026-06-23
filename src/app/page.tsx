@@ -1,4 +1,5 @@
 "use client";
+import { FluidSphere } from "@/components/FluidSphere";
 import { Preloader } from "@/components/Preloader";
 import { FadeUp } from "@/components/FadeUp";
 import { Card3D } from "@/components/Card3D";
@@ -26,9 +27,11 @@ export default function Home() {
           </div>
         </FadeUp>
         
-        {/* Placeholder for the massive fluid animation you saw in the video */}
+        {/* 3D Liquid Sphere Animation */}
         <FadeUp delay={2.4}>
-          <div className="hidden lg:block w-[500px] h-[500px] rounded-full bg-white/5 backdrop-blur-3xl border border-white/10 animate-pulse" />
+          <div className="hidden lg:block relative z-50">
+            <FluidSphere />
+          </div>
         </FadeUp>
       </section>
 
