@@ -1,9 +1,10 @@
+import { FadeUp } from "@/components/FadeUp";
 import { Card3D } from "@/components/Card3D";
 
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center p-6 md:p-24 bg-black text-white selection:bg-white selection:text-black">
-      
+    <FadeUp>
       {/* --- NEW HERO SECTION --- */}
       <div className="flex flex-col items-center mb-20 text-center mt-10 relative z-10">
         
@@ -65,8 +66,9 @@ export default function Home() {
         </div>
       </div>
       {/* --- END HERO SECTION --- */}
-
+    </FadeUp>
       {/* The 3D Grid Layout */}
+    <FadeUp delay={0.2}>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-5xl mx-auto relative z-10">
         
         <Card3D 
@@ -94,6 +96,7 @@ export default function Home() {
         />
 
       </div>
+    </FadeUp>
     </main>
   );
 }
