@@ -13,8 +13,8 @@ export default function Home() {
         </p>
       </div>
 
-      {/* The Grid Layout for the 3D Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-7xl mx-auto">
+      {/* Changed to md:grid-cols-2 so your 4 cards make a perfect square */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-5xl mx-auto">
         
         <Card3D 
           category="Web App"
@@ -28,31 +28,16 @@ export default function Home() {
           description="An innovative smart helmet concept featuring a custom motorized split-chin locking mechanism and real-time automated SOS crash detection routing."
         />
 
-        {/* Added Engineering Project: Smartphone Drone Dock utilizing a vertically-oriented smartphone camera and separate battery */}
-        <Card3D 
-          category="Robotics"
-          title="Smartphone Drone Dock" 
-          description="An innovative drone chassis that uses a vertically-oriented smartphone as the pilot and camera, featuring a separate battery system." 
-        />
-
-        {/* Added Experience: Internship completed at STEM Robotics International */}
         <Card3D 
           category="Experience"
           title="STEM Robotics International" 
           description="Completed a specialized internship program focused on applied Artificial Intelligence and Robotics engineering." 
         />
-
-        {/* Added Creative Project: Stage performance photography focusing on clear face captures amidst dynamic lighting */}
-        <Card3D 
-          category="Visual Arts"
-          title="Stage Performance Photography" 
-          description="High-contrast photography capturing clear subjects surrounded by dynamic light during live stage performances." 
-        />
         
         <Card3D 
           category="Skills"
-          title="Technical Stack" 
-          description="Core proficiencies in structural programming, application logic, and systems engineering using Python, Java, C, and SQL."
+          title="Technical Foundation" 
+          description="Currently building a strong foundation in Python, Java, C, and SQL, with an active focus on learning and applying computer science concepts."
         />
 
       </div>
