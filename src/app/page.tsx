@@ -17,7 +17,8 @@ export default function Home() {
         </div>
 
         {/* Creative Gradient Name */}
-        <h1 className="text-6xl md:text-8xl font-extrabold tracking-tighter mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-500 to-purple-600 drop-shadow-2xl pb-2">
+       {/* Hollow Outline Name */}
+        <h1 className="text-6xl md:text-8xl font-extrabold tracking-tighter mb-4 text-transparent [-webkit-text-stroke:2px_#ffffff] drop-shadow-2xl pb-2">
           Pranav Prasad
         </h1>
 
