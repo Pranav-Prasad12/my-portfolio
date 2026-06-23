@@ -80,7 +80,7 @@ export default function Home() {
             </h2>
             {/* MASSIVE EMAIL LINK */}
             <a href="mailto:pranavkarthika12@gmail.com" className="text-3xl md:text-5xl text-neutral-400 hover:text-white transition-colors duration-300">
-              your-email@gmail.com
+              pranavkarthika12@gmail.com
             </a>
           </div>
         </FadeUp>
