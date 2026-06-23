@@ -8,14 +8,22 @@ export function ThemeToggle() {
 
   React.useEffect(() => setMounted(true), []);
 
-  if (!mounted) return null;
+  // DIAGNOSTIC CHECK: If it gets stuck loading, show a massive red box
+  if (!mounted) {
+    return (
+      <button className="fixed top-20 right-10 z-[999999] px-6 py-3 bg-red-600 text-white font-bold border-4 border-white">
+        LOADING THEME...
+      </button>
+    );
+  }
 
+  // DIAGNOSTIC CHECK: If it loads successfully, show a massive green box
   return (
     <button
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      className="fixed top-8 right-8 md:top-10 md:right-10 z-[100000] flex items-center gap-3 px-6 py-3 rounded-full bg-neutral-200/80 dark:bg-neutral-900/80 backdrop-blur-xl border border-neutral-400/30 dark:border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.3)] transition-all duration-300 hover:scale-105 active:scale-95 text-xs md:text-sm font-bold tracking-[0.2em] uppercase text-black dark:text-white"
+      className="fixed top-20 right-10 z-[999999] px-6 py-3 bg-green-500 text-black font-bold border-4 border-white shadow-2xl"
     >
-      {theme === "dark" ? "☀️ Light" : "🌙 Dark"}
+      {theme === "dark" ? "CLICK FOR LIGHT MODE" : "CLICK FOR DARK MODE"}
     </button>
   );
 }
