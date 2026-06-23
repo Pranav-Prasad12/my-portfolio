@@ -9,7 +9,6 @@ export default function Home() {
         
         {/* Profile Picture */}
         <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-neutral-800 shadow-[0_0_30px_rgba(255,255,255,0.1)] mb-6 transition-transform hover:scale-105 duration-300">
-          {/* This looks for profile.jpg in your public folder */}
           <img 
             src="/profile.jpg" 
             alt="Pranav Prasad" 
@@ -63,6 +62,8 @@ export default function Home() {
           </a>
 
         </div>
+      </div>
+      {/* --- END HERO SECTION --- */}
 
       {/* The 3D Grid Layout */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-5xl mx-auto relative z-10">
