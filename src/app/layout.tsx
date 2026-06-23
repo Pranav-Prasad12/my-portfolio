@@ -1,3 +1,6 @@
+import { ThemeToggle } from "@/components/ThemeToggle";
+import { ThemeProvider } from "@/components/ThemeProvider";
+import { SmoothScroller } from "@/components/SmoothScroller";
 import { CustomCursor } from "@/components/CustomCursor";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
@@ -28,7 +31,11 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col"><CustomCursor />{children}</body>
+      <ThemeProvider>
+        <SmoothScroller>
+          <body className="min-h-full flex flex-col"><CustomCursor /><SmoothScroller>{children}</SmoothScroller></body>
+        </SmoothScroller>
+      </ThemeProvider>
     </html>
   );
 }
