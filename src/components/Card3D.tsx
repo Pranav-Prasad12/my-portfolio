@@ -40,7 +40,7 @@ export const Card3D = ({ title, description, category }: { title: string, descri
           transition: "transform 0.1s ease-out",
           transformStyle: "preserve-3d",
         }}
-        className="bg-neutral-950 border border-neutral-800 rounded-xl p-8 h-full flex flex-col justify-start hover:border-neutral-500 cursor-pointer shadow-2xl overflow-hidden relative group"
+       className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl p-8 h-full flex flex-col justify-start hover:bg-white/10 hover:border-white/20 transition-colors duration-300 cursor-pointer shadow-[0_8px_32px_0_rgba(0,0,0,0.5)] overflow-hidden relative group"
       >
         {/* Glow effect that appears on hover */}
         <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
