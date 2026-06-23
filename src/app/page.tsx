@@ -64,10 +64,10 @@ export default function Home() {
         
         <FadeUp delay={0.2}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
-            <Card3D category="Web App" title="EduConnect Platform" description="A complete console-based social and note-sharing ecosystem built for Kerala syllabus students using Python, SQLite, and structural file management." />
-            <Card3D category="IoT Hardware" title="Project Split-Jaw" description="An innovative smart helmet concept featuring a custom motorized split-chin locking mechanism and real-time automated SOS crash detection routing." />
+            <Card3D category="Web App" title="EduConnect Platform" description="A complete console-based social and note-sharing ecosystem built for Kerala syllabus students using Python, SQLite, and structural file management." imageSrc="/educonnect.jpg" />
+            <Card3D category="IoT Hardware" title="Project Split-Jaw" description="An innovative smart helmet concept featuring a custom motorized split-chin locking mechanism and real-time automated SOS crash detection routing." imageSrc="/split-jaw.jpg" />
             <Card3D category="Experience" title="STEM Robotics International" description="Completed a specialized internship program focused on applied Artificial Intelligence and Robotics engineering." />
-            <Card3D category="Skills" title="Technical Foundation" description="Currently building a strong foundation in Python, Java, C, and SQL, with an active focus on learning and applying computer science concepts." />
+            <Card3D category="Skills" title="Technical Foundation" description="Currently building a strong foundation in Python, Java, C, and SQL, with an active focus on learning and applying computer science concepts." imageSrc="/technical-foundation.jpg" />
           </div>
         </FadeUp>
       </section>

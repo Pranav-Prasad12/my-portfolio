@@ -6,7 +6,6 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { CustomCursor } from "@/components/CustomCursor";
 import { SmoothScroller } from "@/components/SmoothScroller";
-import { CursorProvider } from "@/context/CursorContext"; // <-- NEW IMPORT
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,18 +24,13 @@ export default function RootLayout({
       <body className={`${inter.className} antialiased bg-white dark:bg-black text-black dark:text-white transition-colors duration-500`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} disableTransitionOnChange>
           
-          {/* THE NEW WRAPPER */}
-          <CursorProvider>
-            
-            <CustomCursor />
-            <ThemeToggle />
-            
-            <SmoothScroller>
-              {children}
-            </SmoothScroller>
-              
-          </CursorProvider>
+          <CustomCursor />
+          <ThemeToggle />
           
+          <SmoothScroller>
+            {children}
+          </SmoothScroller>
+              
         </ThemeProvider>
       </body>
     </html>

@@ -1,7 +1,8 @@
 "use client";
 import React, { useRef, useState } from "react";
 
-export const Card3D = ({ title, description, category }: { title: string, description: string, category: string }) => {
+// NOTICE: We added "imageSrc?: string" here so you can pass images to it!
+export const Card3D = ({ title, description, category, imageSrc }: { title: string, description: string, category: string, imageSrc?: string }) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const [rotateX, setRotateX] = useState(0);
   const [rotateY, setRotateY] = useState(0);
@@ -40,13 +41,23 @@ export const Card3D = ({ title, description, category }: { title: string, descri
           transition: "transform 0.1s ease-out",
           transformStyle: "preserve-3d",
         }}
-       className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl p-8 h-full flex flex-col justify-start hover:bg-white/10 hover:border-white/20 transition-colors duration-300 cursor-pointer shadow-[0_8px_32px_0_rgba(0,0,0,0.5)] overflow-hidden relative group"
+        className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl p-8 h-full flex flex-col justify-start hover:bg-white/10 hover:border-white/20 transition-colors duration-300 cursor-pointer shadow-[0_8px_32px_0_rgba(0,0,0,0.5)] overflow-hidden relative group"
       >
         {/* Glow effect that appears on hover */}
-        <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-10" />
+        
+       {/* THE FINAL ANIMATED IMAGE BACKGROUND */}
+        {imageSrc && (
+          <img
+            src={imageSrc}
+            alt={title}
+            className="absolute inset-0 w-full h-full object-cover z-0 opacity-0 group-hover:opacity-50 transition-opacity duration-700 ease-in-out pointer-events-none"
+          />
+        )}
         
         {/* 3D Pop-out content */}
-        <div style={{ transform: "translateZ(40px)" }}>
+        {/* NOTICE: Added 'relative z-20' so the text stays safely IN FRONT of the image */}
+        <div className="relative z-20" style={{ transform: "translateZ(40px)" }}>
           <span className="text-xs font-bold px-3 py-1 bg-white text-black rounded-full mb-4 inline-block shadow-lg">
             {category}
           </span>
