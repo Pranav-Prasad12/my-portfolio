@@ -23,7 +23,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       {/* The BODY tag must wrap everything else! */}
       <body className={`${inter.className} antialiased bg-white dark:bg-black text-black dark:text-white transition-colors duration-500`}>
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} disableTransitionOnChange>
           
           <CustomCursor />
           <ThemeToggle />
