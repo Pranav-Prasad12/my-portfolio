@@ -11,7 +11,7 @@ export default function Home() {
 
   return (
     <main className="bg-black text-white selection:bg-white selection:text-black">
-      <Preloader />
+     <Preloader />
 
       {/* --- LAYER 1: HERO --- */}
       <section className="min-h-screen flex items-center justify-between p-6 md:p-24 max-w-7xl mx-auto relative z-10">
