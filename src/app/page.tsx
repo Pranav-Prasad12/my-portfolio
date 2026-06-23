@@ -10,7 +10,7 @@ export default function Home() {
   };
 
   return (
-    <main className="bg-black text-white selection:bg-white selection:text-black">
+    <main className="selection:bg-black selection:text-white dark:selection:bg-white dark:selection:text-black">
      <Preloader />
 
       {/* --- LAYER 1: HERO --- */}

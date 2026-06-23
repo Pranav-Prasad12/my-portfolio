@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       {/* The BODY tag must wrap everything else! */}
-      <body className={`${inter.className} antialiased`}>
+      <body className={`${inter.className} antialiased bg-white dark:bg-black text-black dark:text-white transition-colors duration-500`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
           
           <CustomCursor />
