@@ -1,8 +1,9 @@
 "use client";
+import { BlobBackground } from "@/components/BlobBackground";
 import { FluidSphere } from "@/components/FluidSphere";
 import { Preloader } from "@/components/Preloader";
 import { FadeUp } from "@/components/FadeUp";
-import { Card3D } from "@/components/Card3D";
+import { LiquidBubbleCard } from "@/components/Card3D";
 
 export default function Home() {
   const scrollToTop = () => {
@@ -10,15 +11,19 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen w-full bg-white dark:bg-[#0a0a0a] text-black dark:text-white transition-colors duration-500 selection:bg-black selection:text-white dark:selection:bg-white dark:selection:text-black">
+<main className="relative min-h-screen text-slate-900 dark:text-white">
+     {/* YOUR NEW 3D METALLIC BACKGROUND */}
+     <BlobBackground />
      <Preloader />
 
       {/* --- LAYER 1: HERO --- */}
       <section className="min-h-screen flex items-center justify-between p-6 md:p-24 max-w-7xl mx-auto relative z-10">
         <FadeUp delay={2.2}> {/* Delayed so it loads AFTER the preloader finishes */}
           <div className="max-w-2xl">
-            <h1 className="text-6xl md:text-[8rem] font-extrabold tracking-tighter leading-none mb-6 text-transparent [-webkit-text-stroke:2px_#ffffff]">
-              PRANAV<br />PRASAD
+            <h1 className="relative text-5xl font-extrabold mt-6 text-slate-900 dark:text-white 
+               bg-clip-text text-transparent bg-[linear-gradient(90deg,transparent_20%,rgba(255,255,255,0.8)_50%,transparent_80%)] 
+               bg-[length:200%_100%] animate-[shimmer_3s_infinite_linear]">
+               Pranav Prasad
             </h1>
             <p className="text-neutral-400 text-lg md:text-xl font-medium tracking-wide">
               From concepts to hardware. <br />
@@ -40,7 +45,7 @@ export default function Home() {
         <FadeUp>
           <div className="max-w-2xl mb-12 md:mb-0">
             <p className="text-blue-500 text-sm font-bold tracking-[0.2em] uppercase mb-8">About</p>
-            <h2 className="text-4xl md:text-5xl font-medium leading-tight text-neutral-300">
+            <h2 className="glass-text text-4xl md:text-5xl font-medium leading-tight text-neutral-300">
               I design, build, and prototype <span className="text-white font-bold">full-stack software</span> and <span className="text-white font-bold">robotic hardware</span>.
             </h2>
             <p className="text-neutral-500 mt-8 text-lg max-w-lg">
@@ -64,10 +69,50 @@ export default function Home() {
         
         <FadeUp delay={0.2}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
-            <Card3D category="Web App" title="EduConnect Platform" description="A complete console-based social and note-sharing ecosystem built for Kerala syllabus students using Python, SQLite, and structural file management." imageSrc="/educonnect.jpg" />
-            <Card3D category="IoT Hardware" title="Project Split-Jaw" description="An innovative smart helmet concept featuring a custom motorized split-chin locking mechanism and real-time automated SOS crash detection routing." imageSrc="/split-jaw.jpg" />
-            <Card3D category="Experience" title="STEM Robotics International" description="Completed a specialized internship program focused on applied Artificial Intelligence and Robotics engineering." />
-            <Card3D category="Skills" title="Technical Foundation" description="Currently building a strong foundation in Python, Java, C, and SQL, with an active focus on learning and applying computer science concepts." imageSrc="/technical-foundation.jpg" />
+            {/* EDUCONNECT GITHUB PORTAL */}
+            <a 
+              href="https://github.com/Pranav-Prasad12/EduConnect" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="block cursor-pointer outline-none"
+            >
+              <LiquidBubbleCard 
+                category="Web App" 
+                title="EduConnect Platform" 
+                description="A complete console-based social and note-sharing ecosystem built for Kerala syllabus students using Python, SQLite, and structural file management. Click to view the source code." 
+                imageSrc="/educonnect.jpg" 
+              />
+            </a>
+           {/* PROJECT SPLIT-JAW PPT PORTAL */}
+            <a 
+              href="/split-jaw-presentation.pdf" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="block cursor-pointer outline-none"
+            >
+              <LiquidBubbleCard 
+                category="IoT Hardware" 
+                title="Project Split-Jaw" 
+                description="An innovative smart helmet concept featuring a custom motorized split-chin locking mechanism and automated SOS crash detection. Click to view the concept presentation." 
+                imageSrc="/split-jaw-v2.jpg" 
+              />
+            </a>
+            {/* THE ACHIEVEMENTS PORTAL CARD */}
+            <a 
+              href="https://www.linkedin.com/in/pranav-prasad-5b6597323/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="block cursor-pointer outline-none"
+            >
+              <LiquidBubbleCard 
+                category="Certifications" 
+                title="Professional Achievements" 
+                description="Click here to explore my latest technical certifications, milestone projects, and professional updates directly on LinkedIn." 
+                /* You can use your certificate image here, or leave it blank to just show the text! */
+                imageSrc="/internship-cert-v2.jpg" 
+              />
+            </a>
+            <LiquidBubbleCard category="Skills" title="Technical Foundation" description="Currently building a strong foundation in Python, Java, C, and SQL, with an active focus on learning and applying computer science concepts." imageSrc="/technical-foundation-v2.jpg" />
           </div>
         </FadeUp>
       </section>
@@ -77,9 +122,9 @@ export default function Home() {
         <FadeUp>
           <div className="mt-20">
             <p className="text-blue-500 text-sm font-bold tracking-[0.2em] uppercase mb-8">Get In Touch</p>
-            <h2 className="text-5xl md:text-8xl font-bold tracking-tighter mb-4">
+            <h2 className="glass-text text-5xl md:text-8xl font-bold tracking-tighter mb-4">
               Let's build something<br />
-              <span className="text-transparent [-webkit-text-stroke:1px_#ffffff]">extraordinary</span>
+              <span className="glass-text">extraordinary</span>
             </h2>
             {/* MASSIVE EMAIL LINK */}
             <a href="mailto:pranavkarthika12@gmail.com" className="text-3xl md:text-5xl text-neutral-400 hover:text-white transition-colors duration-300">
@@ -98,7 +143,7 @@ export default function Home() {
             
             <button 
               onClick={scrollToTop}
-              className="text-6xl md:text-[10rem] font-extrabold tracking-tighter leading-none text-transparent [-webkit-text-stroke:2px_#333333] hover:[-webkit-text-stroke:2px_#ffffff] transition-all duration-500 cursor-pointer"
+              className="glass-text text-6xl md:text-[10rem] font-extrabold tracking-tighter leading-none text-transparent [-webkit-text-stroke:2px_#333333] hover:[-webkit-text-stroke:2px_#ffffff] transition-all duration-500 cursor-pointer"
             >
               Back to top
             </button>

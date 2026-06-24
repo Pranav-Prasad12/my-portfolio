@@ -10,10 +10,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+
 }
 
 body {
@@ -30,5 +27,29 @@ body {
   
   .animate-meteor-effect {
     animation: meteor 5s linear infinite;
+  }
+}
+@layer utilities {
+  .glass-text {
+    /* 1. The Glass Glare: A very faint, translucent gradient that mimics light hitting a curved surface */
+    background: linear-gradient(135deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0) 40%, rgba(0,0,0,0.05) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+    /* 2. The Physical Edge (matches your button's border) */
+    -webkit-text-stroke: 1px rgba(0, 0, 0, 0.25);
+    
+    /* 3. A soft drop shadow to lift it off the background */
+    filter: drop-shadow(0px 4px 8px rgba(0,0,0,0.15));
+  }
+
+  /* DARK MODE: Shifts the glare and borders to frosty white */
+  .dark .glass-text {
+    background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 40%, rgba(255,255,255,0.1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+    filter: drop-shadow(0px 6px 12px rgba(0,0,0,0.4));
   }
 }
