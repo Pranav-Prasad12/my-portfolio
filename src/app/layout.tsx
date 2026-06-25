@@ -1,4 +1,3 @@
-import { Preloader } from "@/components/Preloader";
 import { GlobalBackground } from "@/components/GlobalBackground";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -21,19 +20,18 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
- return (
+  return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.className} antialiased text-slate-900 dark:text-white transition-colors duration-500`}>
-        {/* The Preloader sits right here, on top of everything */}
-        <Preloader /> 
-        
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} disableTransitionOnChange>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={true} disableTransitionOnChange>
+          
           <CustomCursor />
           <ThemeToggle />
           <GlobalBackground />
           <SmoothScroller>
             {children}
           </SmoothScroller>
+              
         </ThemeProvider>
       </body>
     </html>
