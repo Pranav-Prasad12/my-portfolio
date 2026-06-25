@@ -8,7 +8,16 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        // Sets Inter as the default text font (font-sans)
+        sans: ["var(--font-inter)"],
+        // Sets Orbitron for specific headings (font-heading)
+        heading: ["var(--font-orbitron)"],
+        // Sets Space Mono for code snippets and tags (font-mono)
+        mono: ["var(--font-space-mono)"],
+      },
+    },
   },
   plugins: [],
 };

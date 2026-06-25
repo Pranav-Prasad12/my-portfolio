@@ -11,12 +11,12 @@ export default function Home() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  // Reusable styling for the bubble labels so they perfectly match the EduConnect card tags
-  const bubbleLabelClass = "inline-block px-4 py-1.5 text-xs font-bold tracking-[0.2em] uppercase rounded-full bg-white/40 dark:bg-white/10 backdrop-blur-md border border-black/10 dark:border-white/20 shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] dark:shadow-[inset_0_2px_6px_rgba(255,255,255,0.1)] text-blue-600 dark:text-blue-400";
+  const bubbleLabelClass = "inline-block px-4 py-1.5 font-mono text-xs font-bold tracking-[0.2em] uppercase rounded-full bg-white/40 dark:bg-white/10 backdrop-blur-md border border-black/10 dark:border-white/20 shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] dark:shadow-[inset_0_2px_6px_rgba(255,255,255,0.1)] text-blue-600 dark:text-blue-400";
+  
+  const glassButtonClass = "px-6 py-3 rounded-full font-mono text-sm font-bold tracking-widest uppercase bg-white/20 dark:bg-white/5 backdrop-blur-md border border-black/5 dark:border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.05)] text-slate-900 dark:text-white hover:bg-white/40 dark:hover:bg-white/10 hover:-translate-y-2 hover:scale-105 active:scale-95 transition-all duration-300 ease-out flex items-center justify-center";
 
   return (
     <main className="relative min-h-screen text-slate-900 dark:text-white">
-      {/* YOUR NEW 3D METALLIC BACKGROUND */}
       <BlobBackground />
       <Preloader />
 
@@ -25,10 +25,10 @@ export default function Home() {
         <FadeUp delay={2.2}> 
           <div className="max-w-2xl">
             <TextCard>
-              <h1 className="text-6xl md:text-[7rem] font-extrabold tracking-tighter leading-none mb-6 text-transparent [-webkit-text-stroke:2px_#333] dark:[-webkit-text-stroke:2px_#ffffff]">
-                PRANAV<br />PRASAD
-              </h1>
-              <p className="text-slate-600 dark:text-neutral-400 text-lg md:text-xl font-medium tracking-wide">
+              <h1 className="font-sinistre font-bold text-6xl md:text-8xl tracking-tight text-slate-900 dark:text-white mb-6">
+  Pranav Prasad
+</h1>
+              <p className="font-sans text-slate-700 dark:text-gray-200 text-lg md:text-xl font-medium tracking-wide [text-shadow:_0_2px_10px_rgba(0,0,0,0.15)] mt-4">
                 From concepts to hardware. <br />
                 Computer Science & Engineering Student.
               </p>
@@ -36,7 +36,6 @@ export default function Home() {
           </div>
         </FadeUp>
         
-        {/* 3D Liquid Sphere Animation */}
         <FadeUp delay={2.4}>
           <div className="hidden lg:block relative z-50">
             <FluidSphere />
@@ -45,37 +44,35 @@ export default function Home() {
       </section>
 
       {/* --- LAYER 2: ABOUT --- */}
-      <section className="min-h-screen flex flex-col md:flex-row items-center justify-between p-6 md:p-24 max-w-7xl mx-auto border-t border-slate-300/30 dark:border-white/10">
-        <FadeUp>
-          <div className="max-w-2xl mb-12 md:mb-0">
-            <TextCard>
-              {/* THE NEW ABOUT BUBBLE */}
-              <div className="mb-6">
-                <span className={bubbleLabelClass}>
-                  About
-                </span>
+      <section className="min-h-screen flex items-center justify-center p-6 md:p-24 max-w-7xl mx-auto border-t border-slate-300/30 dark:border-white/10">
+        <FadeUp className="w-full">
+          <TextCard>
+            <div className="flex flex-col md:flex-row gap-10 md:gap-16 items-center">
+              <div className="flex-1">
+                <div className="mb-6">
+                  <span className={bubbleLabelClass}>
+                    About
+                  </span>
+                </div>
+                <h2 className="font-heading tracking-wide text-3xl md:text-5xl font-normal leading-tight text-slate-800 dark:text-neutral-300">
+                  I design, build, and prototype <span className="font-bold text-slate-900 dark:text-white">full-stack software</span> and <span className="font-bold text-slate-900 dark:text-white">robotic hardware</span>.
+                </h2>
+                <p className="font-sans text-slate-600 dark:text-neutral-500 mt-8 text-lg">
+                  Currently specializing in structural programming and IoT systems at APJ Abdul Kalam Technological University.
+                </p>
               </div>
-              <h2 className="text-3xl md:text-5xl font-medium leading-tight text-slate-800 dark:text-neutral-300">
-                I design, build, and prototype <span className="text-black dark:text-white font-bold">full-stack software</span> and <span className="text-black dark:text-white font-bold">robotic hardware</span>.
-              </h2>
-              <p className="text-slate-600 dark:text-neutral-500 mt-8 text-lg max-w-lg">
-                Currently specializing in structural programming and IoT systems at APJ Abdul Kalam Technological University.
-              </p>
-            </TextCard>
-          </div>
-        </FadeUp>
-
-        <FadeUp delay={0.2}>
-          <div className="w-full max-w-md aspect-[3/4] overflow-hidden rounded-3xl grayscale hover:grayscale-0 transition-all duration-700 shadow-xl">
-            <img src="/profile.jpg" alt="Pranav Prasad" className="w-full h-full object-cover" />
-          </div>
+              
+              <div className="w-full md:w-64 aspect-[3/4] shrink-0 overflow-hidden rounded-2xl grayscale hover:grayscale-0 transition-all duration-700 shadow-xl">
+                <img src="/profile.jpg" alt="Pranav Prasad" className="w-full h-full object-cover" />
+              </div>
+            </div>
+          </TextCard>
         </FadeUp>
       </section>
 
       {/* --- LAYER 3: CONTRIBUTIONS / WORK --- */}
       <section className="min-h-screen p-6 md:p-24 max-w-7xl mx-auto border-t border-slate-300/30 dark:border-white/10 flex flex-col justify-center">
         <FadeUp>
-          {/* THE NEW SELECTED WORK BUBBLE */}
           <div className="mb-12 ml-4">
             <span className={bubbleLabelClass}>
               Selected Work
@@ -104,17 +101,21 @@ export default function Home() {
         <FadeUp>
           <div className="mt-20 max-w-3xl">
             <TextCard>
-              {/* THE NEW GET IN TOUCH BUBBLE */}
               <div className="mb-6">
                 <span className={bubbleLabelClass}>
                   Get In Touch
                 </span>
               </div>
-              <h2 className="text-5xl md:text-7xl font-bold tracking-tighter mb-8 text-slate-900 dark:text-white">
-                Let's build something<br />
-                <span className="text-transparent [-webkit-text-stroke:2px_#333] dark:[-webkit-text-stroke:2px_#ffffff]">extraordinary</span>
+              <h2 className="font-heading text-4xl md:text-6xl font-normal tracking-tight mb-8 text-slate-800 dark:text-neutral-300">
+                Turning complex concepts into<br />
+                <span className="font-bold text-slate-900 dark:text-white">functional hardware</span> and <span className="font-bold text-slate-900 dark:text-white">scalable code</span>.
               </h2>
-              <a href="mailto:pranavkarthika12@gmail.com" className="inline-block mt-4 text-2xl md:text-4xl text-slate-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors duration-300">
+              
+              {/* UPDATED: Gmail button now has the same pill shape and bouncing animation */}
+              <a 
+                href="mailto:pranavkarthika12@gmail.com" 
+                className="inline-flex mt-6 w-fit px-6 py-3 rounded-full font-mono text-sm font-bold tracking-wider bg-white/20 dark:bg-white/5 backdrop-blur-md border border-black/5 dark:border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.05)] text-slate-900 dark:text-white hover:bg-white/40 dark:hover:bg-white/10 hover:-translate-y-2 hover:scale-105 active:scale-95 transition-all duration-300 ease-out items-center justify-center"
+              >
                 pranavkarthika12@gmail.com
               </a>
             </TextCard>
@@ -123,17 +124,33 @@ export default function Home() {
 
         <FadeUp delay={0.2}>
           <div className="flex flex-col md:flex-row justify-between items-end mt-32 pb-10 border-b border-slate-300/30 dark:border-white/10">
-            <div className="flex gap-8 mb-8 md:mb-0 ml-4">
-              <a href="https://github.com/Pranav-Prasad12" target="_blank" className="text-slate-600 dark:text-neutral-500 hover:text-black dark:hover:text-white uppercase tracking-widest text-sm font-bold transition-colors">GitHub</a>
-              <a href="https://www.linkedin.com/in/pranav-prasad-5b6597323/" target="_blank" className="text-slate-600 dark:text-neutral-500 hover:text-black dark:hover:text-white uppercase tracking-widest text-sm font-bold transition-colors">LinkedIn</a>
-            </div>
             
+            <div className="flex flex-wrap gap-4 md:gap-6 mb-8 md:mb-0 ml-4">
+              <a 
+                href="https://github.com/Pranav-Prasad12" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className={glassButtonClass}
+              >
+                GitHub
+              </a>
+              <a 
+                href="https://www.linkedin.com/in/pranav-prasad-5b6597323/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className={glassButtonClass}
+              >
+                LinkedIn
+              </a>
+            </div>
+
             <button 
               onClick={scrollToTop}
-              className="text-5xl md:text-[8rem] font-extrabold tracking-tighter leading-none text-transparent [-webkit-text-stroke:2px_#cbd5e1] dark:[-webkit-text-stroke:2px_#333333] hover:[-webkit-text-stroke:2px_#333] dark:hover:[-webkit-text-stroke:2px_#ffffff] transition-all duration-500 cursor-pointer"
+              className="font-heading text-5xl md:text-[6rem] font-black tracking-tighter text-slate-900/80 dark:text-white/80 hover:text-slate-900 dark:hover:text-white transition-colors cursor-pointer text-right"
             >
               Back to top
             </button>
+            
           </div>
         </FadeUp>
       </section>
