@@ -37,12 +37,11 @@ export function LiquidBubbleCard({ category, title, description, imageSrc }: Car
         </div>
       )}
 
-      {/* THE CIRCULAR GLARE HAS BEEN COMPLETELY REMOVED FROM HERE */}
-
       {/* 2. THE CARD CONTENT */}
       <div className="relative z-20 flex flex-col h-full">
         <div className="mb-4">
-          <span className="px-4 py-1.5 text-xs font-semibold tracking-wider rounded-full
+          {/* UPDATED: Scaled up font size and padding for Tulpen One */}
+          <span className="px-6 py-2 text-xl md:text-2xl font-semibold tracking-wider rounded-full
                            bg-white/10 backdrop-blur-md border border-black/10 dark:border-white/20
                            shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] dark:shadow-[inset_0_2px_6px_rgba(255,255,255,0.1)]
                            text-black dark:text-white transition-colors duration-500 group-hover:text-white group-hover:border-white/30">
@@ -50,11 +49,13 @@ export function LiquidBubbleCard({ category, title, description, imageSrc }: Car
           </span>
         </div>
 
-       {/* SOLID TEXT TITLE: Readable, bold, and pops cleanly over the image */}
-        <h3 className="text-2xl font-bold tracking-wide mb-3 text-slate-900 dark:text-white group-hover:text-white group-hover:drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)] transition-all duration-500">
+       {/* UPDATED: Scaled up title text size */}
+        <h3 className="text-4xl md:text-5xl font-bold tracking-wide mb-3 text-slate-900 dark:text-white group-hover:text-white group-hover:drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)] transition-all duration-500">
           {title}
         </h3>
-        <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-medium mb-4 group-hover:text-slate-200 transition-colors duration-500">
+        
+        {/* UPDATED: Scaled up description text size */}
+        <p className="text-2xl md:text-3xl text-slate-700 dark:text-slate-300 leading-relaxed font-medium mb-4 group-hover:text-slate-200 transition-colors duration-500">
           {description}
         </p>
       </div>

@@ -1,7 +1,7 @@
 "use client";
 import { TextCard } from "@/components/TextCard";
 import { BlobBackground } from "@/components/BlobBackground";
-import { FluidSphere } from "@/components/FluidSphere";
+import { CuteRobot } from "@/components/CuteRobot";
 import { Preloader } from "@/components/Preloader";
 import { FadeUp } from "@/components/FadeUp";
 import { LiquidBubbleCard } from "@/components/Card3D";
@@ -11,9 +11,11 @@ export default function Home() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const bubbleLabelClass = "inline-block px-4 py-1.5 font-mono text-xs font-bold tracking-[0.2em] uppercase rounded-full bg-white/40 dark:bg-white/10 backdrop-blur-md border border-black/10 dark:border-white/20 shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] dark:shadow-[inset_0_2px_6px_rgba(255,255,255,0.1)] text-blue-600 dark:text-blue-400";
+  // UPDATED: Font size increased to text-xl md:text-2xl
+  const bubbleLabelClass = "inline-block px-6 py-2 font-mono text-xl md:text-2xl font-bold tracking-[0.2em] uppercase rounded-full bg-white/40 dark:bg-white/10 backdrop-blur-md border border-black/10 dark:border-white/20 shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] dark:shadow-[inset_0_2px_6px_rgba(255,255,255,0.1)] text-blue-600 dark:text-blue-400";
   
-  const glassButtonClass = "px-6 py-3 rounded-full font-mono text-sm font-bold tracking-widest uppercase bg-white/20 dark:bg-white/5 backdrop-blur-md border border-black/5 dark:border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.05)] text-slate-900 dark:text-white hover:bg-white/40 dark:hover:bg-white/10 hover:-translate-y-2 hover:scale-105 active:scale-95 transition-all duration-300 ease-out flex items-center justify-center";
+  // UPDATED: Font size increased to text-2xl md:text-3xl
+  const glassButtonClass = "px-5 py-2 md:px-6 md:py-2.5 rounded-full font-mono text-xl md:text-2xl font-bold tracking-widest uppercase bg-white/20 dark:bg-white/5 backdrop-blur-md border border-black/5 dark:border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.05)] text-slate-900 dark:text-white hover:bg-white/40 dark:hover:bg-white/10 hover:-translate-y-2 hover:scale-105 active:scale-95 transition-all duration-300 ease-out flex items-center justify-center";
 
   return (
     <main className="relative min-h-screen text-slate-900 dark:text-white">
@@ -25,10 +27,12 @@ export default function Home() {
         <FadeUp delay={2.2}> 
           <div className="max-w-2xl">
             <TextCard>
-              <h1 className="font-sinistre font-bold text-6xl md:text-8xl tracking-tight text-slate-900 dark:text-white mb-6">
-  Pranav Prasad
-</h1>
-              <p className="font-sans text-slate-700 dark:text-gray-200 text-lg md:text-xl font-medium tracking-wide [text-shadow:_0_2px_10px_rgba(0,0,0,0.15)] mt-4">
+              {/* UPDATED: Increased name size heavily for Iceberg font */}
+              <h1 className="font-hero font-black text-6xl md:text-[7rem] tracking-[0.1em] text-slate-900 dark:text-white mb-6 leading-none">
+                Pranav Prasad
+              </h1>
+              {/* UPDATED: Increased subtitle size heavily for Tulpen One font */}
+              <p className="font-sans text-slate-700 dark:text-gray-200 text-3xl md:text-5xl font-medium tracking-wide [text-shadow:_0_2px_10px_rgba(0,0,0,0.15)] mt-4">
                 From concepts to hardware. <br />
                 Computer Science & Engineering Student.
               </p>
@@ -37,13 +41,13 @@ export default function Home() {
         </FadeUp>
         
         <FadeUp delay={2.4}>
-          <div className="hidden lg:block relative z-50">
-            <FluidSphere />
-          </div>
-        </FadeUp>
+  <div className="hidden lg:block relative z-50">
+    <CuteRobot />
+  </div>
+</FadeUp>
       </section>
 
-      {/* --- LAYER 2: ABOUT --- */}
+      {/* --- LAYER 2: ABOUT (Font sizes kept identical to previous) --- */}
       <section className="min-h-screen flex items-center justify-center p-6 md:p-24 max-w-7xl mx-auto border-t border-slate-300/30 dark:border-white/10">
         <FadeUp className="w-full">
           <TextCard>
@@ -57,7 +61,7 @@ export default function Home() {
                 <h2 className="font-heading tracking-wide text-3xl md:text-5xl font-normal leading-tight text-slate-800 dark:text-neutral-300">
                   I design, build, and prototype <span className="font-bold text-slate-900 dark:text-white">full-stack software</span> and <span className="font-bold text-slate-900 dark:text-white">robotic hardware</span>.
                 </h2>
-                <p className="font-sans text-slate-600 dark:text-neutral-500 mt-8 text-lg">
+                <p className="font-sans text-slate-600 dark:text-neutral-500 mt-8 text-3xl md:text-4xl">
                   Currently specializing in structural programming and IoT systems at APJ Abdul Kalam Technological University.
                 </p>
               </div>
@@ -96,7 +100,7 @@ export default function Home() {
         </FadeUp>
       </section>
 
-      {/* --- LAYER 4: CONTACT & FOOTER --- */}
+      {/* --- LAYER 4: CONTACT & FOOTER (Headings kept identical) --- */}
       <section className="min-h-screen p-6 md:p-24 max-w-7xl mx-auto border-t border-slate-300/30 dark:border-white/10 flex flex-col justify-between">
         <FadeUp>
           <div className="mt-20 max-w-3xl">
@@ -110,14 +114,13 @@ export default function Home() {
                 Turning complex concepts into<br />
                 <span className="font-bold text-slate-900 dark:text-white">functional hardware</span> and <span className="font-bold text-slate-900 dark:text-white">scalable code</span>.
               </h2>
-              
-              {/* UPDATED: Gmail button now has the same pill shape and bouncing animation */}
-              <a 
-                href="mailto:pranavkarthika12@gmail.com" 
-                className="inline-flex mt-6 w-fit px-6 py-3 rounded-full font-mono text-sm font-bold tracking-wider bg-white/20 dark:bg-white/5 backdrop-blur-md border border-black/5 dark:border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.05)] text-slate-900 dark:text-white hover:bg-white/40 dark:hover:bg-white/10 hover:-translate-y-2 hover:scale-105 active:scale-95 transition-all duration-300 ease-out items-center justify-center"
-              >
-                pranavkarthika12@gmail.com
-              </a>
+              {/* UPDATED: Smaller padding and text size for the Email Button */}
+<a 
+  href="mailto:pranavkarthika12@gmail.com" 
+  className="inline-flex mt-6 w-fit px-6 py-2.5 rounded-full font-sans text-2xl md:text-3xl font-bold tracking-widest bg-white/20 dark:bg-white/5 backdrop-blur-md border border-black/5 dark:border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.05)] text-slate-900 dark:text-white hover:bg-white/40 dark:hover:bg-white/10 hover:-translate-y-2 hover:scale-105 active:scale-95 transition-all duration-300 ease-out items-center justify-center"
+>
+  pranavkarthika12@gmail.com
+</a>
             </TextCard>
           </div>
         </FadeUp>

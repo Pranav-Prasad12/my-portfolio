@@ -35,15 +35,15 @@ export function Preloader() {
             }}
           >
             {/* THE TEXT */}
-            <motion.h1
-              // CHANGED: The text is now a sharp, dark graphite (#050505)
-              className="text-[#050505] text-5xl md:text-[8rem] font-black tracking-tighter lowercase"
-              initial={{ scale: 0.9, opacity: 0, filter: "blur(10px)" }}
-              animate={{ scale: 1, opacity: 1, filter: "blur(0px)" }}
-              transition={{ duration: 1.2, ease: "easeOut" }}
-            >
-              welcome
-            </motion.h1>
+         <motion.h1
+  // Updated to use 'font-heading' and the larger font size
+  className="text-[#050505] font-heading text-6xl md:text-[12rem] font-black tracking-tighter lowercase leading-none"
+  initial={{ scale: 0.9, opacity: 0, filter: "blur(10px)" }}
+  animate={{ scale: 1, opacity: 1, filter: "blur(0px)" }}
+  transition={{ duration: 1.2, ease: "easeOut" }}
+>
+  welcome
+</motion.h1>
           </motion.div>
         </motion.div>
       )}
