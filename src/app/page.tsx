@@ -27,11 +27,9 @@ export default function Home() {
       {/* --- LAYER 1: HERO --- */}
       <section className="min-h-[100dvh] flex items-center justify-center p-4 md:p-24 max-w-7xl mx-auto relative z-10 w-full">
         
-        {/* Strict Row Layout: Forces them to sit side-by-side and vertically center with each other */}
         <div className="flex flex-row items-center justify-between w-full pt-16 md:pt-0">
           
-          {/* TEXT: Takes all remaining space (flex-1) and adds right padding so it doesn't touch the robot */}
-          <div className="flex-1 z-20 pr-2 sm:pr-4">
+          <div className="flex-1 z-20 pr-4 sm:pr-8">
             <FadeUp delay={2.2}> 
               <TextCard>
                 <h1 className="font-hero font-black text-4xl sm:text-5xl md:text-[7rem] tracking-[0.1em] text-slate-900 dark:text-white mb-2 md:mb-6 leading-none">
@@ -45,11 +43,10 @@ export default function Home() {
             </FadeUp>
           </div>
           
-          {/* ROBOT: shrink-0 guarantees the text won't crush it. No absolute positioning! */}
-          <div className="shrink-0 z-30 pointer-events-none md:pointer-events-auto flex justify-end">
-            <FadeUp delay={2.4}>
-              {/* Hard-coded dimensions (w-140px on mobile, scaling up on larger screens) keeps it perfectly in bounds */}
-              <div className="w-[140px] h-[220px] sm:w-[200px] sm:h-[300px] md:w-[400px] md:h-[400px] flex items-center justify-end">
+          {/* FINAL FIX: Removed fixed pixels, used flex-shrink-0 + max-w to let it scale perfectly */}
+          <div className="shrink-0 z-30 pointer-events-none md:pointer-events-auto flex justify-end w-[40%] md:w-[400px]">
+            <FadeUp delay={2.4} className="w-full">
+              <div className="w-full aspect-square flex items-center justify-center">
                 <CuteRobot />
               </div>
             </FadeUp>
