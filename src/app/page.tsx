@@ -23,11 +23,11 @@ export default function Home() {
       </div>
       
       <Preloader />
-
 {/* --- LAYER 1: HERO --- */}
-      <section className="min-h-[100dvh] flex flex-col md:flex-row items-center justify-center p-6 md:p-24 max-w-7xl mx-auto relative z-10 gap-8">
+      {/* Changed justify-center to justify-between, and added a specific gap and container width */}
+      <section className="min-h-[100dvh] flex flex-col md:flex-row items-center justify-between p-6 md:p-24 max-w-6xl mx-auto relative z-10 gap-12">
         
-        {/* FIX: Removed flex-1. Added 'w-fit' and 'max-w-xl' so the card stays compact on laptops */}
+        {/* Text Area: w-fit ensures it only takes the space it needs */}
         <div className="w-fit z-10 my-auto">
           <FadeUp delay={2.2}> 
             <TextCard>
@@ -42,12 +42,11 @@ export default function Home() {
           </FadeUp>
         </div>
         
-        {/* Fixed size robot container */}
-        <div className="w-full md:w-[400px] h-[300px] md:h-[400px] flex items-center justify-center z-10 my-auto">
+        {/* Robot Area: Added a slight margin to separate it from the text */}
+        <div className="w-full md:w-[400px] h-[300px] md:h-[400px] flex items-center justify-center z-10 md:ml-12">
           <CuteRobot />
         </div>
       </section>
-
       {/* --- LAYER 2: ABOUT --- */}
       <section className="min-h-[100dvh] flex items-center justify-center p-6 md:p-24 max-w-7xl mx-auto border-t border-slate-300/30 dark:border-white/10 relative z-10">
         <FadeUp className="w-full">
