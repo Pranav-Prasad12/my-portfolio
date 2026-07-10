@@ -25,28 +25,28 @@ export default function Home() {
       <Preloader />
 
       {/* --- LAYER 1: HERO --- */}
-      <section className="min-h-[100dvh] flex flex-col md:flex-row items-center justify-center p-4 md:p-24 max-w-7xl mx-auto relative z-10">
+      <section className="min-h-[100dvh] flex flex-col md:flex-row items-center justify-center p-6 md:p-24 max-w-7xl mx-auto relative z-10 gap-8">
         
-        {/* Text Area */}
-        <div className="flex-1 w-full z-10">
+        {/* Text Area: Using 'my-auto' to ensure it stays centered vertically on all screens */}
+        <div className="flex-1 w-full z-10 my-auto">
           <FadeUp delay={2.2}> 
             <TextCard>
-              <h1 className="font-hero font-black text-4xl sm:text-6xl md:text-[7rem] tracking-[0.1em] text-slate-900 dark:text-white mb-4 leading-none">
+              {/* Reduced text size for mobile specifically */}
+              <h1 className="font-hero font-black text-5xl md:text-[7rem] tracking-[0.1em] leading-none mb-6">
                 Pranav Prasad
               </h1>
-              <p className="font-sans text-slate-700 dark:text-gray-200 text-lg sm:text-3xl md:text-5xl font-medium tracking-wide mt-4">
-                From concepts to hardware. <br />
+              <p className="font-sans text-xl md:text-5xl font-medium tracking-wide">
+                From concepts to hardware.<br />
                 Computer Science & Engineering Student.
               </p>
             </TextCard>
           </FadeUp>
         </div>
         
-        {/* Robot Area: Removed absolute positioning, added flex-shrink-0 to force it to stay in the layout */}
-        <div className="flex-shrink-0 w-full md:w-[400px] h-[300px] md:h-[400px] flex items-center justify-center z-10">
+        {/* Robot Area: Explicitly setting mobile height to 300px so it doesn't take up the whole screen */}
+        <div className="w-full md:w-[400px] h-[300px] md:h-[400px] flex items-center justify-center z-10 my-auto">
           <CuteRobot />
         </div>
-
       </section>
 
       {/* --- LAYER 2: ABOUT --- */}
