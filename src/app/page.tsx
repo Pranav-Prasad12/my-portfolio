@@ -26,30 +26,35 @@ export default function Home() {
       <Preloader />
 
       {/* --- LAYER 1: HERO --- */}
-      <section className="min-h-[100dvh] flex flex-row items-center justify-between p-6 md:p-24 max-w-7xl mx-auto relative z-10">
+      <section className="min-h-[100dvh] flex items-center justify-center p-4 md:p-24 max-w-7xl mx-auto relative z-10 w-full overflow-hidden">
         
-        {/* Text Container */}
-        <FadeUp delay={2.2} className="w-[60%] md:w-auto"> 
-          <div className="max-w-2xl mt-16 md:mt-0">
-            <TextCard>
-              <h1 className="font-hero font-black text-4xl sm:text-5xl md:text-[7rem] tracking-[0.1em] text-slate-900 dark:text-white mb-4 md:mb-6 leading-none">
-                Pranav Prasad
-              </h1>
-              <p className="font-sans text-slate-700 dark:text-gray-200 text-xl sm:text-2xl md:text-5xl font-medium tracking-wide [text-shadow:_0_2px_10px_rgba(0,0,0,0.15)] mt-2 md:mt-4">
-                From concepts to hardware. <br />
-                Computer Science & Engineering Student.
-              </p>
-            </TextCard>
-          </div>
-        </FadeUp>
-        
-        {/* Robot Container */}
-        <FadeUp delay={2.4} className="w-[40%] md:w-auto">
-          <div className="relative z-50 flex justify-end w-full transform scale-[0.6] sm:scale-75 md:scale-100 origin-right mt-16 md:mt-0">
-            <CuteRobot />
-          </div>
-        </FadeUp>
+        {/* Row container for side-by-side alignment */}
+        <div className="flex flex-row items-center justify-between w-full pt-16 md:pt-0">
+          
+          {/* Text Container: flex-1 takes all available remaining space */}
+          <FadeUp delay={2.2} className="flex-1 z-20 min-w-0"> 
+            <div className="max-w-2xl">
+              <TextCard>
+                <h1 className="font-hero font-black text-4xl sm:text-5xl md:text-[7rem] tracking-[0.1em] text-slate-900 dark:text-white mb-2 md:mb-6 leading-none">
+                  Pranav Prasad
+                </h1>
+                <p className="font-sans text-slate-700 dark:text-gray-200 text-lg sm:text-2xl md:text-5xl font-medium tracking-wide [text-shadow:_0_2px_10px_rgba(0,0,0,0.15)] mt-2">
+                  From concepts to hardware. <br />
+                  Computer Science & Engineering Student.
+                </p>
+              </TextCard>
+            </div>
+          </FadeUp>
+          
+          {/* Robot Container: shrink-0 ensures it never gets crushed by the text */}
+          <FadeUp delay={2.4} className="shrink-0 z-10 flex justify-end">
+            {/* Scale down to 50% on mobile, scale to 100% on laptop. Pinned to the right. */}
+            <div className="transform scale-[0.5] sm:scale-[0.6] md:scale-100 origin-right md:origin-center -ml-12 md:ml-0">
+              <CuteRobot />
+            </div>
+          </FadeUp>
 
+        </div>
       </section>
 
       {/* --- LAYER 2: ABOUT --- */}
