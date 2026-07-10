@@ -24,12 +24,11 @@ export default function Home() {
       
       <Preloader />
 
-   {/* --- LAYER 1: HERO --- */}
-      {/* Added pt-24 md:pt-0 to push content down on mobile */}
-      <section className="min-h-[100dvh] flex flex-col md:flex-row items-center justify-center p-6 md:p-24 max-w-7xl mx-auto relative z-10 gap-8 pt-24 md:pt-0">
+{/* --- LAYER 1: HERO --- */}
+      <section className="min-h-[100dvh] flex flex-col md:flex-row items-center justify-center p-6 md:p-24 max-w-7xl mx-auto relative z-10 gap-8">
         
-        {/* Text Area */}
-        <div className="flex-1 w-full z-10">
+        {/* FIX: Removed flex-1. Added 'w-fit' and 'max-w-xl' so the card stays compact on laptops */}
+        <div className="w-fit z-10 my-auto">
           <FadeUp delay={2.2}> 
             <TextCard>
               <h1 className="font-hero font-black text-5xl md:text-[7rem] tracking-[0.1em] leading-none mb-6">
@@ -43,8 +42,8 @@ export default function Home() {
           </FadeUp>
         </div>
         
-       {/* Robot Area: Added -mt-16 for mobile to nudge it higher */}
-        <div className="w-full md:w-[400px] h-[300px] md:h-[400px] flex items-center justify-center z-10 -mt-16 md:mt-0">
+        {/* Fixed size robot container */}
+        <div className="w-full md:w-[400px] h-[300px] md:h-[400px] flex items-center justify-center z-10 my-auto">
           <CuteRobot />
         </div>
       </section>
