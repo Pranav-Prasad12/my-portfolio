@@ -28,12 +28,11 @@ export default function Home() {
       {/* --- LAYER 1: HERO --- */}
       <section className="min-h-[100dvh] flex items-center justify-center p-4 md:p-24 max-w-7xl mx-auto relative z-10 w-full overflow-hidden">
         
-        {/* Row container for side-by-side alignment */}
-        <div className="flex flex-row items-center justify-between w-full pt-16 md:pt-0">
+        <div className="flex flex-row items-center w-full pt-16 md:pt-0 relative">
           
-          {/* Text Container: flex-1 takes all available remaining space */}
-          <FadeUp delay={2.2} className="flex-1 z-20 min-w-0"> 
-            <div className="max-w-2xl">
+          {/* Text Container: Restricted width on mobile so it doesn't run underneath the robot */}
+          <FadeUp delay={2.2} className="w-full md:flex-1 z-20"> 
+            <div className="max-w-[75%] md:max-w-2xl">
               <TextCard>
                 <h1 className="font-hero font-black text-4xl sm:text-5xl md:text-[7rem] tracking-[0.1em] text-slate-900 dark:text-white mb-2 md:mb-6 leading-none">
                   Pranav Prasad
@@ -46,10 +45,10 @@ export default function Home() {
             </div>
           </FadeUp>
           
-          {/* Robot Container: shrink-0 ensures it never gets crushed by the text */}
-          <FadeUp delay={2.4} className="shrink-0 z-10 flex justify-end">
-            {/* Scale down to 50% on mobile, scale to 100% on laptop. Pinned to the right. */}
-            <div className="transform scale-[0.5] sm:scale-[0.6] md:scale-100 origin-right md:origin-center -ml-12 md:ml-0">
+          {/* Robot Container: Absolute (floating) on mobile, Normal on desktop */}
+          <FadeUp delay={2.4} className="absolute right-[-1.5rem] md:relative md:right-auto md:shrink-0 z-10 flex justify-end top-1/2 -translate-y-1/2 md:top-auto md:translate-y-0">
+            {/* pointer-events-none on mobile stops the invisible edge of the canvas from blocking clicks */}
+            <div className="transform scale-[0.45] sm:scale-[0.6] md:scale-100 origin-right pointer-events-none md:pointer-events-auto">
               <CuteRobot />
             </div>
           </FadeUp>
