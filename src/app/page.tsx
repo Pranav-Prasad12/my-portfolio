@@ -24,14 +24,14 @@ export default function Home() {
       
       <Preloader />
 {/* --- LAYER 1: HERO --- */}
-      {/* Changed justify-center to justify-between, and added a specific gap and container width */}
-      <section className="min-h-[100dvh] flex flex-col md:flex-row items-center justify-between p-6 md:p-24 max-w-6xl mx-auto relative z-10 gap-12">
+      <section className="min-h-[100dvh] flex flex-col md:flex-row items-center justify-center p-6 md:p-24 max-w-7xl mx-auto relative z-10 gap-x-24">
         
-        {/* Text Area: w-fit ensures it only takes the space it needs */}
+        {/* Text Area: W-fit keeps it on one line as you prefer */}
         <div className="w-fit z-10 my-auto">
           <FadeUp delay={2.2}> 
             <TextCard>
-              <h1 className="font-hero font-black text-5xl md:text-[7rem] tracking-[0.1em] leading-none mb-6">
+              {/* Name is kept on one line */}
+              <h1 className="font-hero font-black text-5xl md:text-[7rem] tracking-[0.1em] leading-none mb-6 whitespace-nowrap">
                 Pranav Prasad
               </h1>
               <p className="font-sans text-2xl md:text-5xl font-medium tracking-wide">
@@ -42,8 +42,8 @@ export default function Home() {
           </FadeUp>
         </div>
         
-        {/* Robot Area: Added a slight margin to separate it from the text */}
-        <div className="w-full md:w-[400px] h-[300px] md:h-[400px] flex items-center justify-center z-10 md:ml-12">
+        {/* Robot Area: The gap-x-24 in the section above automatically pushes this to the right */}
+        <div className="w-full md:w-[400px] h-[300px] md:h-[400px] flex items-center justify-center z-10">
           <CuteRobot />
         </div>
       </section>
