@@ -25,33 +25,37 @@ export default function Home() {
       <Preloader />
 
       {/* --- LAYER 1: HERO --- */}
-      <section className="min-h-[100dvh] flex flex-col md:flex-row items-center justify-between p-4 md:p-24 max-w-7xl mx-auto relative z-10 w-full">
+      <section className="min-h-[100dvh] flex items-center justify-center p-4 md:p-24 max-w-7xl mx-auto relative z-10 w-full">
         
-        {/* TEXT: Normal flow. Takes up 65% of screen width on mobile so it doesn't slide under the robot */}
-        <div className="w-[65%] sm:w-[70%] md:flex-1 relative z-20 pt-16 md:pt-0">
-          <FadeUp delay={2.2}> 
-            <TextCard>
-              <h1 className="font-hero font-black text-4xl sm:text-5xl md:text-[7rem] tracking-[0.1em] text-slate-900 dark:text-white mb-2 md:mb-6 leading-none">
-                Pranav Prasad
-              </h1>
-              <p className="font-sans text-slate-700 dark:text-gray-200 text-lg sm:text-2xl md:text-5xl font-medium tracking-wide [text-shadow:_0_2px_10px_rgba(0,0,0,0.15)] mt-2">
-                From concepts to hardware. <br />
-                Computer Science & Engineering Student.
-              </p>
-            </TextCard>
-          </FadeUp>
-        </div>
-        
-        {/* ROBOT: Floats absolutely on mobile, acts normal on desktop. pointer-events-none preserves scrolling! */}
-        <div className="absolute right-[-10px] top-1/2 -translate-y-1/2 md:relative md:top-auto md:translate-y-0 md:shrink-0 z-30 pointer-events-none md:pointer-events-auto flex justify-end">
-          <FadeUp delay={2.4}>
-            {/* CRITICAL FIX: Explicit width and height stops the Canvas from collapsing to 0px! */}
-            <div className="w-[200px] h-[300px] sm:w-[250px] sm:h-[350px] md:w-[400px] md:h-[400px] flex items-center justify-end transform scale-[0.9] md:scale-100 origin-right">
-              <CuteRobot />
-            </div>
-          </FadeUp>
-        </div>
+        {/* Strict Row Layout: Forces them to sit side-by-side and vertically center with each other */}
+        <div className="flex flex-row items-center justify-between w-full pt-16 md:pt-0">
+          
+          {/* TEXT: Takes all remaining space (flex-1) and adds right padding so it doesn't touch the robot */}
+          <div className="flex-1 z-20 pr-2 sm:pr-4">
+            <FadeUp delay={2.2}> 
+              <TextCard>
+                <h1 className="font-hero font-black text-4xl sm:text-5xl md:text-[7rem] tracking-[0.1em] text-slate-900 dark:text-white mb-2 md:mb-6 leading-none">
+                  Pranav Prasad
+                </h1>
+                <p className="font-sans text-slate-700 dark:text-gray-200 text-lg sm:text-2xl md:text-5xl font-medium tracking-wide [text-shadow:_0_2px_10px_rgba(0,0,0,0.15)] mt-2">
+                  From concepts to hardware. <br />
+                  Computer Science & Engineering Student.
+                </p>
+              </TextCard>
+            </FadeUp>
+          </div>
+          
+          {/* ROBOT: shrink-0 guarantees the text won't crush it. No absolute positioning! */}
+          <div className="shrink-0 z-30 pointer-events-none md:pointer-events-auto flex justify-end">
+            <FadeUp delay={2.4}>
+              {/* Hard-coded dimensions (w-140px on mobile, scaling up on larger screens) keeps it perfectly in bounds */}
+              <div className="w-[140px] h-[220px] sm:w-[200px] sm:h-[300px] md:w-[400px] md:h-[400px] flex items-center justify-end">
+                <CuteRobot />
+              </div>
+            </FadeUp>
+          </div>
 
+        </div>
       </section>
 
       {/* --- LAYER 2: ABOUT --- */}
