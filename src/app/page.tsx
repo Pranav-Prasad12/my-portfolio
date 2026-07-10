@@ -16,7 +16,7 @@ export default function Home() {
   const glassButtonClass = "px-5 py-2 md:px-6 md:py-2.5 rounded-full font-mono text-xl md:text-2xl font-bold tracking-widest uppercase bg-white/20 dark:bg-white/5 backdrop-blur-md border border-black/5 dark:border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.05)] text-slate-900 dark:text-white hover:bg-white/40 dark:hover:bg-white/10 hover:-translate-y-2 hover:scale-105 active:scale-95 transition-all duration-300 ease-out flex items-center justify-center";
 
   return (
-    <main className="relative min-h-[100dvh] overscroll-none text-slate-900 dark:text-white">
+    <main className="relative min-h-[100dvh] overscroll-none text-slate-900 dark:text-white overflow-x-hidden">
       
       {/* Background locked in place to prevent mobile scrolling redraw glitches */}
       <div className="fixed top-0 left-0 w-full h-full z-0 overflow-hidden pointer-events-none">
@@ -26,13 +26,14 @@ export default function Home() {
       <Preloader />
 
       {/* --- LAYER 1: HERO --- */}
-      <section className="min-h-[100dvh] flex items-center justify-center p-4 md:p-24 max-w-7xl mx-auto relative z-10 w-full overflow-hidden">
+      {/* FIX: Removed overflow-hidden from this specific section so the robot doesn't get clipped */}
+      <section className="min-h-[100dvh] flex items-center justify-center p-4 md:p-24 max-w-7xl mx-auto relative z-10 w-full">
         
         <div className="flex flex-row items-center w-full pt-16 md:pt-0 relative">
           
-          {/* Text Container: Restricted width on mobile so it doesn't run underneath the robot */}
-          <FadeUp delay={2.2} className="w-full md:flex-1 z-20"> 
-            <div className="max-w-[75%] md:max-w-2xl">
+          {/* Text Container: Set to 85% width on mobile so it leaves breathing room for the robot */}
+          <FadeUp delay={2.2} className="w-[85%] sm:w-[75%] md:flex-1 z-20"> 
+            <div className="max-w-[100%] md:max-w-2xl">
               <TextCard>
                 <h1 className="font-hero font-black text-4xl sm:text-5xl md:text-[7rem] tracking-[0.1em] text-slate-900 dark:text-white mb-2 md:mb-6 leading-none">
                   Pranav Prasad
@@ -45,10 +46,9 @@ export default function Home() {
             </div>
           </FadeUp>
           
-          {/* Robot Container: Absolute (floating) on mobile, Normal on desktop */}
-          <FadeUp delay={2.4} className="absolute right-[-1.5rem] md:relative md:right-auto md:shrink-0 z-10 flex justify-end top-1/2 -translate-y-1/2 md:top-auto md:translate-y-0">
-            {/* pointer-events-none on mobile stops the invisible edge of the canvas from blocking clicks */}
-            <div className="transform scale-[0.45] sm:scale-[0.6] md:scale-100 origin-right pointer-events-none md:pointer-events-auto">
+          {/* Robot Container: Absolute position right-0, z-30 to ensure it is always on top! */}
+          <FadeUp delay={2.4} className="absolute right-0 md:relative md:shrink-0 z-30 flex justify-end top-1/2 -translate-y-1/2 md:top-auto md:translate-y-0 pointer-events-none md:pointer-events-auto">
+            <div className="transform scale-[0.55] sm:scale-75 md:scale-100 origin-right">
               <CuteRobot />
             </div>
           </FadeUp>
