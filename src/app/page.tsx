@@ -43,8 +43,8 @@ export default function Home() {
           </FadeUp>
         </div>
         
-        {/* Robot Area */}
-        <div className="w-full md:w-[400px] h-[300px] md:h-[400px] flex items-center justify-center z-10">
+       {/* Robot Area: Added -mt-16 for mobile to nudge it higher */}
+        <div className="w-full md:w-[400px] h-[300px] md:h-[400px] flex items-center justify-center z-10 -mt-16 md:mt-0">
           <CuteRobot />
         </div>
       </section>
