@@ -24,29 +24,27 @@ export default function Home() {
       
       <Preloader />
 {/* --- LAYER 1: HERO --- */}
-      <section className="min-h-[100dvh] flex flex-col md:flex-row items-center justify-center p-6 md:p-24 max-w-7xl mx-auto relative z-10 gap-x-24">
-        
-        {/* Text Area: W-fit keeps it on one line as you prefer */}
-        <div className="w-fit z-10 my-auto">
-          <FadeUp delay={2.2}> 
-            <TextCard>
-              {/* Name is kept on one line */}
-              <h1 className="font-hero font-black text-5xl md:text-[7rem] tracking-[0.1em] leading-none mb-6 whitespace-nowrap">
-                Pranav Prasad
-              </h1>
-              <p className="font-sans text-2xl md:text-5xl font-medium tracking-wide">
-                From concepts to hardware.<br />
-                Computer Science & Engineering Student.
-              </p>
-            </TextCard>
-          </FadeUp>
-        </div>
-        
-        {/* Robot Area: The gap-x-24 in the section above automatically pushes this to the right */}
-        <div className="w-full md:w-[400px] h-[300px] md:h-[400px] flex items-center justify-center z-10">
-          <CuteRobot />
-        </div>
-      </section>
+<section className="min-h-[100dvh] flex flex-col md:flex-row items-center justify-center p-6 md:p-24 max-w-7xl mx-auto relative z-10 gap-x-24">
+  
+  <div className="w-fit z-10 my-auto">
+    <FadeUp delay={2.2}> 
+      <TextCard>
+        <h1 className="font-hero font-black text-5xl md:text-[7rem] tracking-[0.1em] leading-none mb-6 whitespace-nowrap">
+          Pranav Prasad
+        </h1>
+        <p className="font-sans text-2xl md:text-5xl font-medium tracking-wide">
+          From concepts to hardware.<br />
+          Computer Science & Engineering Student.
+        </p>
+      </TextCard>
+    </FadeUp>
+  </div>
+  
+  {/* PERFORMANCE FIX: Added 'will-change-transform' to offload rendering to the GPU */}
+  <div className="w-full md:w-[400px] h-[300px] md:h-[400px] flex items-center justify-center z-10 will-change-transform">
+    <CuteRobot />
+  </div>
+</section>
       {/* --- LAYER 2: ABOUT --- */}
       <section className="min-h-[100dvh] flex items-center justify-center p-6 md:p-24 max-w-7xl mx-auto border-t border-slate-300/30 dark:border-white/10 relative z-10">
         <FadeUp className="w-full">
