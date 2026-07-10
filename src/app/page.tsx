@@ -24,18 +24,18 @@ export default function Home() {
       
       <Preloader />
 
-      {/* --- LAYER 1: HERO --- */}
-      <section className="min-h-[100dvh] flex flex-col md:flex-row items-center justify-center p-6 md:p-24 max-w-7xl mx-auto relative z-10 gap-8">
+   {/* --- LAYER 1: HERO --- */}
+      {/* Added pt-24 md:pt-0 to push content down on mobile */}
+      <section className="min-h-[100dvh] flex flex-col md:flex-row items-center justify-center p-6 md:p-24 max-w-7xl mx-auto relative z-10 gap-8 pt-24 md:pt-0">
         
-        {/* Text Area: Using 'my-auto' to ensure it stays centered vertically on all screens */}
-        <div className="flex-1 w-full z-10 my-auto">
+        {/* Text Area */}
+        <div className="flex-1 w-full z-10">
           <FadeUp delay={2.2}> 
             <TextCard>
-              {/* Reduced text size for mobile specifically */}
               <h1 className="font-hero font-black text-5xl md:text-[7rem] tracking-[0.1em] leading-none mb-6">
                 Pranav Prasad
               </h1>
-              <p className="font-sans text-xl md:text-5xl font-medium tracking-wide">
+              <p className="font-sans text-2xl md:text-5xl font-medium tracking-wide">
                 From concepts to hardware.<br />
                 Computer Science & Engineering Student.
               </p>
@@ -43,8 +43,8 @@ export default function Home() {
           </FadeUp>
         </div>
         
-        {/* Robot Area: Explicitly setting mobile height to 300px so it doesn't take up the whole screen */}
-        <div className="w-full md:w-[400px] h-[300px] md:h-[400px] flex items-center justify-center z-10 my-auto">
+        {/* Robot Area */}
+        <div className="w-full md:w-[400px] h-[300px] md:h-[400px] flex items-center justify-center z-10">
           <CuteRobot />
         </div>
       </section>
