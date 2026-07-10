@@ -12,47 +12,41 @@ export default function Home() {
   };
 
   const bubbleLabelClass = "inline-block px-6 py-2 font-mono text-xl md:text-2xl font-bold tracking-[0.2em] uppercase rounded-full bg-white/40 dark:bg-white/10 backdrop-blur-md border border-black/10 dark:border-white/20 shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] dark:shadow-[inset_0_2px_6px_rgba(255,255,255,0.1)] text-blue-600 dark:text-blue-400";
-  
   const glassButtonClass = "px-5 py-2 md:px-6 md:py-2.5 rounded-full font-mono text-xl md:text-2xl font-bold tracking-widest uppercase bg-white/20 dark:bg-white/5 backdrop-blur-md border border-black/5 dark:border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.05)] text-slate-900 dark:text-white hover:bg-white/40 dark:hover:bg-white/10 hover:-translate-y-2 hover:scale-105 active:scale-95 transition-all duration-300 ease-out flex items-center justify-center";
 
   return (
-    <main className="relative min-h-[100dvh] text-slate-900 dark:text-white overflow-x-hidden">
+    <main className="relative min-h-[100dvh] text-slate-900 dark:text-white">
       
-      <div className="fixed top-0 left-0 w-full h-full z-0 overflow-hidden pointer-events-none">
+      {/* Background set to fixed to stop scroll-lag */}
+      <div className="fixed inset-0 z-0">
         <BlobBackground />
       </div>
       
       <Preloader />
 
       {/* --- LAYER 1: HERO --- */}
-      <section className="min-h-[100dvh] flex items-center justify-center p-4 md:p-24 max-w-7xl mx-auto relative z-10 w-full">
+      <section className="min-h-[100dvh] flex flex-col md:flex-row items-center justify-center p-4 md:p-24 max-w-7xl mx-auto relative z-10">
         
-        <div className="flex flex-row items-center justify-between w-full pt-16 md:pt-0">
-          
-          <div className="flex-1 z-20 pr-4 sm:pr-8">
-            <FadeUp delay={2.2}> 
-              <TextCard>
-                <h1 className="font-hero font-black text-4xl sm:text-5xl md:text-[7rem] tracking-[0.1em] text-slate-900 dark:text-white mb-2 md:mb-6 leading-none">
-                  Pranav Prasad
-                </h1>
-                <p className="font-sans text-slate-700 dark:text-gray-200 text-lg sm:text-2xl md:text-5xl font-medium tracking-wide [text-shadow:_0_2px_10px_rgba(0,0,0,0.15)] mt-2">
-                  From concepts to hardware. <br />
-                  Computer Science & Engineering Student.
-                </p>
-              </TextCard>
-            </FadeUp>
-          </div>
-          
-          {/* FINAL FIX: Removed fixed pixels, used flex-shrink-0 + max-w to let it scale perfectly */}
-          <div className="shrink-0 z-30 pointer-events-none md:pointer-events-auto flex justify-end w-[40%] md:w-[400px]">
-            <FadeUp delay={2.4} className="w-full">
-              <div className="w-full aspect-square flex items-center justify-center">
-                <CuteRobot />
-              </div>
-            </FadeUp>
-          </div>
-
+        {/* Text Area */}
+        <div className="flex-1 w-full z-10">
+          <FadeUp delay={2.2}> 
+            <TextCard>
+              <h1 className="font-hero font-black text-4xl sm:text-6xl md:text-[7rem] tracking-[0.1em] text-slate-900 dark:text-white mb-4 leading-none">
+                Pranav Prasad
+              </h1>
+              <p className="font-sans text-slate-700 dark:text-gray-200 text-lg sm:text-3xl md:text-5xl font-medium tracking-wide mt-4">
+                From concepts to hardware. <br />
+                Computer Science & Engineering Student.
+              </p>
+            </TextCard>
+          </FadeUp>
         </div>
+        
+        {/* Robot Area: Removed absolute positioning, added flex-shrink-0 to force it to stay in the layout */}
+        <div className="flex-shrink-0 w-full md:w-[400px] h-[300px] md:h-[400px] flex items-center justify-center z-10">
+          <CuteRobot />
+        </div>
+
       </section>
 
       {/* --- LAYER 2: ABOUT --- */}
