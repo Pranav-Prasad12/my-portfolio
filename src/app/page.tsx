@@ -16,40 +16,36 @@ export default function Home() {
   const glassButtonClass = "px-5 py-2 md:px-6 md:py-2.5 rounded-full font-mono text-xl md:text-2xl font-bold tracking-widest uppercase bg-white/20 dark:bg-white/5 backdrop-blur-md border border-black/5 dark:border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.05)] text-slate-900 dark:text-white hover:bg-white/40 dark:hover:bg-white/10 hover:-translate-y-2 hover:scale-105 active:scale-95 transition-all duration-300 ease-out flex items-center justify-center";
 
   return (
-    <main className="relative min-h-[100dvh] text-slate-900 dark:text-white overflow-x-hidden">
-      
-      {/* BACKGROUND: Safe from scroll-lag */}
-      <div className="fixed inset-0 z-0 pointer-events-none">
-        <BlobBackground />
-      </div>
-      
+    <main className="relative min-h-[100dvh] overscroll-none text-slate-900 dark:text-white">
+      {/* Mobile scrolling and React JSX errors fixed */}
+      <BlobBackground />
       <Preloader />
 
       {/* --- LAYER 1: HERO --- */}
-      <section className="min-h-[100dvh] flex flex-col md:flex-row items-center justify-center p-6 md:p-24 max-w-7xl mx-auto relative z-10 gap-x-8 lg:gap-x-24">
-        
-        <div className="w-fit z-10 my-auto">
-          <FadeUp delay={2.2}> 
+      <section className="min-h-[100dvh] flex flex-col lg:flex-row items-center justify-between p-6 md:p-24 max-w-7xl mx-auto relative z-10">
+        <FadeUp delay={2.2}> 
+          <div className="max-w-2xl mt-16 lg:mt-0">
             <TextCard>
-              <h1 className="font-hero font-black text-5xl md:text-[7rem] tracking-[0.1em] leading-none mb-6 whitespace-nowrap">
+              <h1 className="font-hero font-black text-6xl md:text-[7rem] tracking-[0.1em] text-slate-900 dark:text-white mb-6 leading-none">
                 Pranav Prasad
               </h1>
-              <p className="font-sans text-2xl md:text-5xl font-medium tracking-wide">
-                From concepts to hardware.<br />
+              <p className="font-sans text-slate-700 dark:text-gray-200 text-3xl md:text-5xl font-medium tracking-wide [text-shadow:_0_2px_10px_rgba(0,0,0,0.15)] mt-4">
+                From concepts to hardware. <br />
                 Computer Science & Engineering Student.
               </p>
             </TextCard>
-          </FadeUp>
-        </div>
+          </div>
+        </FadeUp>
         
-        {/* ROBOT */}
-        <div className="w-full md:w-[400px] h-[300px] md:h-[400px] flex items-center justify-center z-10 pointer-events-none md:pointer-events-auto">
-          <CuteRobot />
-        </div>
+        <FadeUp delay={2.4}>
+          <div className="relative z-50 mt-12 lg:mt-0 flex justify-center w-full">
+            <CuteRobot />
+          </div>
+        </FadeUp>
       </section>
 
       {/* --- LAYER 2: ABOUT --- */}
-      <section className="min-h-[100dvh] flex items-center justify-center p-6 md:p-24 max-w-7xl mx-auto border-t border-slate-300/30 dark:border-white/10 relative z-10">
+      <section className="min-h-[100dvh] flex items-center justify-center p-6 md:p-24 max-w-7xl mx-auto border-t border-slate-300/30 dark:border-white/10">
         <FadeUp className="w-full">
           <TextCard>
             <div className="flex flex-col md:flex-row gap-10 md:gap-16 items-center">
@@ -67,16 +63,16 @@ export default function Home() {
                 </p>
               </div>
               
-              <div className="w-full md:w-64 aspect-[3/4] shrink-0 overflow-hidden rounded-2xl grayscale hover:grayscale-0 transition-all duration-700 shadow-xl relative z-20">
-                <img src="/profile.jpg" alt="Pranav Prasad" className="w-full h-full object-cover relative z-20" />
+              <div className="w-full md:w-64 aspect-[3/4] shrink-0 overflow-hidden rounded-2xl grayscale hover:grayscale-0 transition-all duration-700 shadow-xl">
+                <img src="/profile.jpg" alt="Pranav Prasad" className="w-full h-full object-cover" />
               </div>
             </div>
           </TextCard>
         </FadeUp>
       </section>
 
-      {/* --- LAYER 3: CONTRIBUTIONS / WORK (BOUNCING BOXES RESTORED) --- */}
-      <section className="min-h-[100dvh] p-6 md:p-24 max-w-7xl mx-auto border-t border-slate-300/30 dark:border-white/10 flex flex-col justify-center relative z-10">
+      {/* --- LAYER 3: CONTRIBUTIONS / WORK --- */}
+      <section className="min-h-[100dvh] p-6 md:p-24 max-w-7xl mx-auto border-t border-slate-300/30 dark:border-white/10 flex flex-col justify-center">
         <FadeUp>
           <div className="mb-12 ml-4">
             <span className={bubbleLabelClass}>
@@ -86,25 +82,23 @@ export default function Home() {
         </FadeUp>
         
         <FadeUp delay={0.2}>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full relative z-20">
-            <a href="https://github.com/Pranav-Prasad12/EduConnect" target="_blank" rel="noopener noreferrer" className="block cursor-pointer outline-none relative z-30">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
+            <a href="https://github.com/Pranav-Prasad12/EduConnect" target="_blank" rel="noopener noreferrer" className="block cursor-pointer outline-none">
               <LiquidBubbleCard category="Web App" title="EduConnect Platform" description="A complete console-based social and note-sharing ecosystem built for Kerala syllabus students using Python, SQLite, and structural file management. Click to view the source code." imageSrc="/educonnect.jpg" />
             </a>
-            <a href="/split-jaw-presentation.pdf" target="_blank" rel="noopener noreferrer" className="block cursor-pointer outline-none relative z-30">
+            <a href="/split-jaw-presentation.pdf" target="_blank" rel="noopener noreferrer" className="block cursor-pointer outline-none">
               <LiquidBubbleCard category="IoT Hardware" title="Project Split-Jaw" description="An innovative smart helmet concept featuring a custom motorized split-chin locking mechanism and automated SOS crash detection. Click to view the concept presentation." imageSrc="/split-jaw-v2.jpg" />
             </a>
-            <a href="https://www.linkedin.com/in/pranav-prasad-5b6597323/" target="_blank" rel="noopener noreferrer" className="block cursor-pointer outline-none relative z-30">
+            <a href="https://www.linkedin.com/in/pranav-prasad-5b6597323/" target="_blank" rel="noopener noreferrer" className="block cursor-pointer outline-none">
               <LiquidBubbleCard category="Certifications" title="Professional Achievements" description="Click here to explore my latest technical certifications, milestone projects, and professional updates directly on LinkedIn." imageSrc="/internship-cert-v2.jpg" />
             </a>
-            <div className="relative z-30">
-              <LiquidBubbleCard category="Skills" title="Technical Foundation" description="Currently building a strong foundation in Python, Java, C, and SQL, with an active focus on learning and applying computer science concepts." imageSrc="/technical-foundation-v2.jpg" />
-            </div>
+            <LiquidBubbleCard category="Skills" title="Technical Foundation" description="Currently building a strong foundation in Python, Java, C, and SQL, with an active focus on learning and applying computer science concepts." imageSrc="/technical-foundation-v2.jpg" />
           </div>
         </FadeUp>
       </section>
 
       {/* --- LAYER 4: CONTACT & FOOTER --- */}
-      <section className="min-h-[100dvh] p-6 md:p-24 max-w-7xl mx-auto border-t border-slate-300/30 dark:border-white/10 flex flex-col justify-between relative z-10">
+      <section className="min-h-[100dvh] p-6 md:p-24 max-w-7xl mx-auto border-t border-slate-300/30 dark:border-white/10 flex flex-col justify-between">
         <FadeUp>
           <div className="mt-20 max-w-3xl">
             <TextCard>
@@ -119,7 +113,7 @@ export default function Home() {
               </h2>
               <a 
                 href="mailto:pranavkarthika12@gmail.com" 
-                className="inline-flex mt-6 w-fit px-6 py-2.5 rounded-full font-sans text-2xl md:text-3xl font-bold tracking-widest bg-white/20 dark:bg-white/5 backdrop-blur-md border border-black/5 dark:border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.05)] text-slate-900 dark:text-white hover:bg-white/40 dark:hover:bg-white/10 hover:-translate-y-2 hover:scale-105 active:scale-95 transition-all duration-300 ease-out items-center justify-center relative z-20"
+                className="inline-flex mt-6 w-fit px-6 py-2.5 rounded-full font-sans text-2xl md:text-3xl font-bold tracking-widest bg-white/20 dark:bg-white/5 backdrop-blur-md border border-black/5 dark:border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.05)] text-slate-900 dark:text-white hover:bg-white/40 dark:hover:bg-white/10 hover:-translate-y-2 hover:scale-105 active:scale-95 transition-all duration-300 ease-out items-center justify-center"
               >
                 pranavkarthika12@gmail.com
               </a>
@@ -128,9 +122,9 @@ export default function Home() {
         </FadeUp>
 
         <FadeUp delay={0.2}>
-          <div className="flex flex-col md:flex-row justify-between items-end mt-32 pb-10 border-b border-slate-300/30 dark:border-white/10 relative z-20">
+          <div className="flex flex-col md:flex-row justify-between items-end mt-32 pb-10 border-b border-slate-300/30 dark:border-white/10">
             
-            <div className="flex flex-wrap gap-4 md:gap-6 mb-8 md:mb-0 ml-4 relative z-30">
+            <div className="flex flex-wrap gap-4 md:gap-6 mb-8 md:mb-0 ml-4">
               <a 
                 href="https://github.com/Pranav-Prasad12" 
                 target="_blank" 
@@ -151,7 +145,7 @@ export default function Home() {
 
             <button 
               onClick={scrollToTop}
-              className="font-heading text-5xl md:text-[6rem] font-black tracking-tighter text-slate-900/80 dark:text-white/80 hover:text-slate-900 dark:hover:text-white transition-colors cursor-pointer text-right relative z-30"
+              className="font-heading text-5xl md:text-[6rem] font-black tracking-tighter text-slate-900/80 dark:text-white/80 hover:text-slate-900 dark:hover:text-white transition-colors cursor-pointer text-right"
             >
               Back to top
             </button>
