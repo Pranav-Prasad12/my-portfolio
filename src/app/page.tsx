@@ -18,27 +18,29 @@ export default function Home() {
   return (
     <main className="relative min-h-[100dvh] text-slate-900 dark:text-white overflow-x-hidden bg-white/0">
       
-      {/* 1. BACKGROUND: Locked to the bottom layer, completely ignored by mouse/scroll events */}
+      {/* 1. BACKGROUND */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         <BlobBackground />
       </div>
       
-      {/* 2. COMPOSITING WRAPPER: This is the magic fix. By translating this entire block to the GPU, 
-          the browser scrolls this content effortlessly over the heavy 3D background without lagging. */}
-      <div className="relative z-10 w-full" style={{ transform: 'translateZ(0)' }}>
+      {/* 2. COMPOSITING WRAPPER */}
+      <div className="relative z-10 w-full transform-gpu">
         
         <Preloader />
 
         {/* --- LAYER 1: HERO --- */}
-        <section className="min-h-[100dvh] flex flex-col md:flex-row items-center justify-center p-6 md:p-24 max-w-7xl mx-auto relative z-10 gap-x-24">
+        {/* FIX: Changed gap-x-24 to gap-8 lg:gap-16 to prevent the container from breaking the screen width */}
+        <section className="min-h-[100dvh] flex flex-col md:flex-row items-center justify-center p-6 md:p-12 lg:p-24 max-w-7xl mx-auto relative z-10 gap-8 lg:gap-16">
           
-          <div className="w-fit z-10 my-auto">
+          {/* FIX: Removed w-fit, allowed flex to handle the sizing naturally without forcing horizontal overflow */}
+          <div className="flex-1 z-10 my-auto min-w-0">
             <FadeUp delay={2.2}> 
               <TextCard>
-                <h1 className="font-hero font-black text-5xl md:text-[7rem] tracking-[0.1em] leading-none mb-6 whitespace-nowrap">
+                {/* FIX: Removed whitespace-nowrap and used responsive font sizing so it fits on 13-inch & 15-inch laptops perfectly */}
+                <h1 className="font-hero font-black text-5xl md:text-6xl lg:text-[6rem] xl:text-[7rem] tracking-[0.1em] leading-none mb-6 shrink-0">
                   Pranav Prasad
                 </h1>
-                <p className="font-sans text-2xl md:text-5xl font-medium tracking-wide">
+                <p className="font-sans text-2xl md:text-4xl lg:text-5xl font-medium tracking-wide">
                   From concepts to hardware.<br />
                   Computer Science & Engineering Student.
                 </p>
@@ -46,7 +48,7 @@ export default function Home() {
             </FadeUp>
           </div>
           
-          <div className="w-full md:w-[400px] h-[300px] md:h-[400px] flex items-center justify-center z-10 pointer-events-none md:pointer-events-auto">
+          <div className="shrink-0 w-full md:w-[350px] lg:w-[400px] h-[300px] md:h-[350px] lg:h-[400px] flex items-center justify-center z-10 pointer-events-none md:pointer-events-auto">
             <CuteRobot />
           </div>
         </section>
@@ -163,7 +165,6 @@ export default function Home() {
           </FadeUp>
         </section>
         
-      {/* End Compositing Wrapper */}
       </div>
 
     </main>
