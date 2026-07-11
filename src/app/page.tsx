@@ -7,176 +7,157 @@ import { FadeUp } from "@/components/FadeUp";
 import { LiquidBubbleCard } from "@/components/Card3D";
 
 export default function Home() {
-  // We must update the scroll function to target our new custom scrolling box!
   const scrollToTop = () => {
-    const scrollContainer = document.getElementById("main-scroll-container");
-    if (scrollContainer) {
-      scrollContainer.scrollTo({ top: 0, behavior: "smooth" });
-    }
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const bubbleLabelClass = "inline-block px-6 py-2 font-mono text-xl md:text-2xl font-bold tracking-[0.2em] uppercase rounded-full bg-slate-100/90 dark:bg-slate-800/90 border border-black/10 dark:border-white/20 shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] dark:shadow-[inset_0_2px_6px_rgba(255,255,255,0.1)] text-blue-600 dark:text-blue-400";
+  
   const glassButtonClass = "px-5 py-2 md:px-6 md:py-2.5 rounded-full font-mono text-xl md:text-2xl font-bold tracking-widest uppercase bg-slate-100/90 dark:bg-slate-800/90 border border-black/5 dark:border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.05)] text-slate-900 dark:text-white hover:bg-slate-200 dark:hover:bg-slate-700 hover:-translate-y-2 hover:scale-105 active:scale-95 transition-all duration-300 ease-out flex items-center justify-center";
 
   return (
-    /* CRITICAL FIX 1: We lock the main body so it CANNOT scroll. It acts as a static frame. */
-    <main className="relative h-[100dvh] w-full overflow-hidden text-slate-900 dark:text-white">
+    <main className="relative min-h-[100dvh] text-slate-900 dark:text-white overflow-x-hidden">
       
-      {/* NUCLEAR OPTION: This style block forcefully disables any hidden backdrop-blurs in your other components that might be killing your GPU */}
-      <style dangerouslySetInnerHTML={{__html: `
-        .performance-mode * { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
-      `}} />
-
-      {/* CRITICAL FIX 2: The 3D Background sits stationary in the background layer. */}
-      <div className="absolute inset-0 z-0 pointer-events-none transform-gpu" style={{ transform: 'translateZ(0)' }}>
+      {/* Background locked and GPU accelerated to prevent scroll lag */}
+      <div className="fixed inset-0 z-0 pointer-events-none transform-gpu" style={{ transform: 'translateZ(0)' }}>
         <BlobBackground />
       </div>
       
       <Preloader />
 
-      {/* CRITICAL FIX 3: ALL content goes inside this independent scrolling container. 
-          The browser can scroll this effortlessly without repainting the 3D background! */}
-      <div 
-        id="main-scroll-container" 
-        className="absolute inset-0 z-10 overflow-y-auto overflow-x-hidden h-full w-full performance-mode scroll-smooth"
-      >
+      {/* --- LAYER 1: HERO --- */}
+      <section className="min-h-[100dvh] flex flex-col md:flex-row items-center justify-center p-6 md:p-24 max-w-7xl mx-auto relative z-10 gap-x-24">
         
-        {/* --- LAYER 1: HERO --- */}
-        <section className="min-h-[100dvh] flex flex-col md:flex-row items-center justify-center p-6 md:p-24 max-w-7xl mx-auto relative z-10 gap-x-24">
-          
-          <div className="w-fit z-10 my-auto">
-            <FadeUp delay={2.2}> 
-              <TextCard>
-                <h1 className="font-hero font-black text-5xl md:text-[7rem] tracking-[0.1em] leading-none mb-6 whitespace-nowrap">
-                  Pranav Prasad
-                </h1>
-                <p className="font-sans text-2xl md:text-5xl font-medium tracking-wide">
-                  From concepts to hardware.<br />
-                  Computer Science & Engineering Student.
-                </p>
-              </TextCard>
-            </FadeUp>
-          </div>
-          
-          <div className="w-full md:w-[400px] h-[300px] md:h-[400px] flex items-center justify-center z-10">
-            <CuteRobot />
-          </div>
-        </section>
-
-        {/* --- LAYER 2: ABOUT --- */}
-        <section className="min-h-[100dvh] flex items-center justify-center p-6 md:p-24 max-w-7xl mx-auto border-t border-slate-300/30 dark:border-white/10 relative z-10">
-          <FadeUp className="w-full">
+        <div className="w-fit z-10 my-auto">
+          <FadeUp delay={2.2}> 
             <TextCard>
-              <div className="flex flex-col md:flex-row gap-10 md:gap-16 items-center">
-                <div className="flex-1">
-                  <div className="mb-6">
-                    <span className={bubbleLabelClass}>
-                      About
-                    </span>
-                  </div>
-                  <h2 className="font-heading tracking-wide text-3xl md:text-5xl font-normal leading-tight text-slate-800 dark:text-neutral-300">
-                    I design, build, and prototype <span className="font-bold text-slate-900 dark:text-white">full-stack software</span> and <span className="font-bold text-slate-900 dark:text-white">robotic hardware</span>.
-                  </h2>
-                  <p className="font-sans text-slate-600 dark:text-neutral-500 mt-8 text-3xl md:text-4xl">
-                    Currently specializing in structural programming and IoT systems at APJ Abdul Kalam Technological University.
-                  </p>
-                </div>
-                
-                <div className="w-full md:w-64 aspect-[3/4] shrink-0 overflow-hidden rounded-2xl grayscale hover:grayscale-0 transition-all duration-700 shadow-xl relative z-20">
-                  <img src="/profile.jpg" alt="Pranav Prasad" className="w-full h-full object-cover relative z-20" />
-                </div>
-              </div>
+              <h1 className="font-hero font-black text-5xl md:text-[7rem] tracking-[0.1em] leading-none mb-6 whitespace-nowrap">
+                Pranav Prasad
+              </h1>
+              <p className="font-sans text-2xl md:text-5xl font-medium tracking-wide">
+                From concepts to hardware.<br />
+                Computer Science & Engineering Student.
+              </p>
             </TextCard>
           </FadeUp>
-        </section>
+        </div>
+        
+        <div className="w-full md:w-[400px] h-[300px] md:h-[400px] flex items-center justify-center z-10 will-change-transform">
+          <CuteRobot />
+        </div>
+      </section>
 
-        {/* --- LAYER 3: CONTRIBUTIONS / WORK --- */}
-        <section className="min-h-[100dvh] p-6 md:p-24 max-w-7xl mx-auto border-t border-slate-300/30 dark:border-white/10 flex flex-col justify-center relative z-10">
-          <FadeUp>
-            <div className="mb-12 ml-4">
-              <span className={bubbleLabelClass}>
-                Selected Work
-              </span>
-            </div>
-          </FadeUp>
-          
-          <FadeUp delay={0.2}>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full relative z-20">
-              <a href="https://github.com/Pranav-Prasad12/EduConnect" target="_blank" rel="noopener noreferrer" className="block cursor-pointer outline-none relative z-30">
-                <LiquidBubbleCard category="Web App" title="EduConnect Platform" description="A complete console-based social and note-sharing ecosystem built for Kerala syllabus students using Python, SQLite, and structural file management. Click to view the source code." imageSrc="/educonnect.jpg" />
-              </a>
-              <a href="/split-jaw-presentation.pdf" target="_blank" rel="noopener noreferrer" className="block cursor-pointer outline-none relative z-30">
-                <LiquidBubbleCard category="IoT Hardware" title="Project Split-Jaw" description="An innovative smart helmet concept featuring a custom motorized split-chin locking mechanism and automated SOS crash detection. Click to view the concept presentation." imageSrc="/split-jaw-v2.jpg" />
-              </a>
-              <a href="https://www.linkedin.com/in/pranav-prasad-5b6597323/" target="_blank" rel="noopener noreferrer" className="block cursor-pointer outline-none relative z-30">
-                <LiquidBubbleCard category="Certifications" title="Professional Achievements" description="Click here to explore my latest technical certifications, milestone projects, and professional updates directly on LinkedIn." imageSrc="/internship-cert-v2.jpg" />
-              </a>
-              <div className="relative z-30">
-                <LiquidBubbleCard category="Skills" title="Technical Foundation" description="Currently building a strong foundation in Python, Java, C, and SQL, with an active focus on learning and applying computer science concepts." imageSrc="/technical-foundation-v2.jpg" />
-              </div>
-            </div>
-          </FadeUp>
-        </section>
-
-        {/* --- LAYER 4: CONTACT & FOOTER --- */}
-        <section className="min-h-[100dvh] p-6 md:p-24 max-w-7xl mx-auto border-t border-slate-300/30 dark:border-white/10 flex flex-col justify-between relative z-10">
-          <FadeUp>
-            <div className="mt-20 max-w-3xl">
-              <TextCard>
+      {/* --- LAYER 2: ABOUT --- */}
+      <section className="min-h-[100dvh] flex items-center justify-center p-6 md:p-24 max-w-7xl mx-auto border-t border-slate-300/30 dark:border-white/10 relative z-10">
+        <FadeUp className="w-full">
+          <TextCard>
+            <div className="flex flex-col md:flex-row gap-10 md:gap-16 items-center">
+              <div className="flex-1">
                 <div className="mb-6">
                   <span className={bubbleLabelClass}>
-                    Get In Touch
+                    About
                   </span>
                 </div>
-                <h2 className="font-heading text-4xl md:text-6xl font-normal tracking-tight mb-8 text-slate-800 dark:text-neutral-300">
-                  Turning complex concepts into<br />
-                  <span className="font-bold text-slate-900 dark:text-white">functional hardware</span> and <span className="font-bold text-slate-900 dark:text-white">scalable code</span>.
+                <h2 className="font-heading tracking-wide text-3xl md:text-5xl font-normal leading-tight text-slate-800 dark:text-neutral-300">
+                  I design, build, and prototype <span className="font-bold text-slate-900 dark:text-white">full-stack software</span> and <span className="font-bold text-slate-900 dark:text-white">robotic hardware</span>.
                 </h2>
-                <a 
-                  href="mailto:pranavkarthika12@gmail.com" 
-                  className="inline-flex mt-6 w-fit px-6 py-2.5 rounded-full font-sans text-2xl md:text-3xl font-bold tracking-widest bg-slate-100/90 dark:bg-slate-800/90 border border-black/5 dark:border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.05)] text-slate-900 dark:text-white hover:bg-slate-200 dark:hover:bg-slate-700 hover:-translate-y-2 hover:scale-105 active:scale-95 transition-all duration-300 ease-out items-center justify-center relative z-20"
-                >
-                  pranavkarthika12@gmail.com
-                </a>
-              </TextCard>
-            </div>
-          </FadeUp>
-
-          <FadeUp delay={0.2}>
-            <div className="flex flex-col md:flex-row justify-between items-end mt-32 pb-10 border-b border-slate-300/30 dark:border-white/10 relative z-20">
-              
-              <div className="flex flex-wrap gap-4 md:gap-6 mb-8 md:mb-0 ml-4 relative z-30">
-                <a 
-                  href="https://github.com/Pranav-Prasad12" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className={glassButtonClass}
-                >
-                  GitHub
-                </a>
-                <a 
-                  href="https://www.linkedin.com/in/pranav-prasad-5b6597323/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className={glassButtonClass}
-                >
-                  LinkedIn
-                </a>
+                <p className="font-sans text-slate-600 dark:text-neutral-500 mt-8 text-3xl md:text-4xl">
+                  Currently specializing in structural programming and IoT systems at APJ Abdul Kalam Technological University.
+                </p>
               </div>
-
-              <button 
-                onClick={scrollToTop}
-                className="font-heading text-5xl md:text-[6rem] font-black tracking-tighter text-slate-900/80 dark:text-white/80 hover:text-slate-900 dark:hover:text-white transition-colors cursor-pointer text-right relative z-30"
-              >
-                Back to top
-              </button>
               
+              <div className="w-full md:w-64 aspect-[3/4] shrink-0 overflow-hidden rounded-2xl grayscale hover:grayscale-0 transition-all duration-700 shadow-xl relative z-20">
+                <img src="/profile.jpg" alt="Pranav Prasad" className="w-full h-full object-cover relative z-20" />
+              </div>
             </div>
-          </FadeUp>
-        </section>
+          </TextCard>
+        </FadeUp>
+      </section>
 
-      {/* End of custom scrolling container */}
-      </div>
+      {/* --- LAYER 3: CONTRIBUTIONS / WORK --- */}
+      <section className="min-h-[100dvh] p-6 md:p-24 max-w-7xl mx-auto border-t border-slate-300/30 dark:border-white/10 flex flex-col justify-center relative z-10">
+        <FadeUp>
+          <div className="mb-12 ml-4">
+            <span className={bubbleLabelClass}>
+              Selected Work
+            </span>
+          </div>
+        </FadeUp>
+        
+        <FadeUp delay={0.2}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full relative z-20">
+            <a href="https://github.com/Pranav-Prasad12/EduConnect" target="_blank" rel="noopener noreferrer" className="block cursor-pointer outline-none relative z-30">
+              <LiquidBubbleCard category="Web App" title="EduConnect Platform" description="A complete console-based social and note-sharing ecosystem built for Kerala syllabus students using Python, SQLite, and structural file management. Click to view the source code." imageSrc="/educonnect.jpg" />
+            </a>
+            <a href="/split-jaw-presentation.pdf" target="_blank" rel="noopener noreferrer" className="block cursor-pointer outline-none relative z-30">
+              <LiquidBubbleCard category="IoT Hardware" title="Project Split-Jaw" description="An innovative smart helmet concept featuring a custom motorized split-chin locking mechanism and automated SOS crash detection. Click to view the concept presentation." imageSrc="/split-jaw-v2.jpg" />
+            </a>
+            <a href="https://www.linkedin.com/in/pranav-prasad-5b6597323/" target="_blank" rel="noopener noreferrer" className="block cursor-pointer outline-none relative z-30">
+              <LiquidBubbleCard category="Certifications" title="Professional Achievements" description="Click here to explore my latest technical certifications, milestone projects, and professional updates directly on LinkedIn." imageSrc="/internship-cert-v2.jpg" />
+            </a>
+            <div className="relative z-30">
+              <LiquidBubbleCard category="Skills" title="Technical Foundation" description="Currently building a strong foundation in Python, Java, C, and SQL, with an active focus on learning and applying computer science concepts." imageSrc="/technical-foundation-v2.jpg" />
+            </div>
+          </div>
+        </FadeUp>
+      </section>
+
+      {/* --- LAYER 4: CONTACT & FOOTER --- */}
+      <section className="min-h-[100dvh] p-6 md:p-24 max-w-7xl mx-auto border-t border-slate-300/30 dark:border-white/10 flex flex-col justify-between relative z-10">
+        <FadeUp>
+          <div className="mt-20 max-w-3xl">
+            <TextCard>
+              <div className="mb-6">
+                <span className={bubbleLabelClass}>
+                  Get In Touch
+                </span>
+              </div>
+              <h2 className="font-heading text-4xl md:text-6xl font-normal tracking-tight mb-8 text-slate-800 dark:text-neutral-300">
+                Turning complex concepts into<br />
+                <span className="font-bold text-slate-900 dark:text-white">functional hardware</span> and <span className="font-bold text-slate-900 dark:text-white">scalable code</span>.
+              </h2>
+              <a 
+                href="mailto:pranavkarthika12@gmail.com" 
+                className="inline-flex mt-6 w-fit px-6 py-2.5 rounded-full font-sans text-2xl md:text-3xl font-bold tracking-widest bg-slate-100/90 dark:bg-slate-800/90 border border-black/5 dark:border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.05)] text-slate-900 dark:text-white hover:bg-slate-200 dark:hover:bg-slate-700 hover:-translate-y-2 hover:scale-105 active:scale-95 transition-all duration-300 ease-out items-center justify-center relative z-20"
+              >
+                pranavkarthika12@gmail.com
+              </a>
+            </TextCard>
+          </div>
+        </FadeUp>
+
+        <FadeUp delay={0.2}>
+          <div className="flex flex-col md:flex-row justify-between items-end mt-32 pb-10 border-b border-slate-300/30 dark:border-white/10 relative z-20">
+            
+            <div className="flex flex-wrap gap-4 md:gap-6 mb-8 md:mb-0 ml-4 relative z-30">
+              <a 
+                href="https://github.com/Pranav-Prasad12" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className={glassButtonClass}
+              >
+                GitHub
+              </a>
+              <a 
+                href="https://www.linkedin.com/in/pranav-prasad-5b6597323/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className={glassButtonClass}
+              >
+                LinkedIn
+              </a>
+            </div>
+
+            <button 
+              onClick={scrollToTop}
+              className="font-heading text-5xl md:text-[6rem] font-black tracking-tighter text-slate-900/80 dark:text-white/80 hover:text-slate-900 dark:hover:text-white transition-colors cursor-pointer text-right relative z-30"
+            >
+              Back to top
+            </button>
+            
+          </div>
+        </FadeUp>
+      </section>
 
     </main>
   );
