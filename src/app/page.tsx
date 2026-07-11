@@ -4,19 +4,21 @@ import { BlobBackground } from "@/components/BlobBackground";
 import { CuteRobot } from "@/components/CuteRobot";
 import { Preloader } from "@/components/Preloader";
 import { FadeUp } from "@/components/FadeUp";
+import { LiquidBubbleCard } from "@/components/Card3D";
 
 export default function Home() {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const bubbleLabelClass = "inline-block px-6 py-2 font-mono text-xl md:text-2xl font-bold tracking-[0.2em] uppercase rounded-full bg-slate-100/90 dark:bg-slate-800/90 border border-black/10 dark:border-white/20 shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] dark:shadow-[inset_0_2px_6px_rgba(255,255,255,0.1)] text-blue-600 dark:text-blue-400";
+  const bubbleLabelClass = "inline-block px-6 py-2 font-mono text-xl md:text-2xl font-bold tracking-[0.2em] uppercase rounded-full bg-white/40 dark:bg-white/10 backdrop-blur-md border border-black/10 dark:border-white/20 shadow-[inset_0_2px_6px_rgba(0,0,0,0.05)] dark:shadow-[inset_0_2px_6px_rgba(255,255,255,0.1)] text-blue-600 dark:text-blue-400";
   
-  const glassButtonClass = "px-5 py-2 md:px-6 md:py-2.5 rounded-full font-mono text-xl md:text-2xl font-bold tracking-widest uppercase bg-slate-100/90 dark:bg-slate-800/90 border border-black/5 dark:border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.05)] text-slate-900 dark:text-white hover:bg-slate-200 dark:hover:bg-slate-700 hover:-translate-y-2 hover:scale-105 active:scale-95 transition-all duration-300 ease-out flex items-center justify-center";
+  const glassButtonClass = "px-5 py-2 md:px-6 md:py-2.5 rounded-full font-mono text-xl md:text-2xl font-bold tracking-widest uppercase bg-white/20 dark:bg-white/5 backdrop-blur-md border border-black/5 dark:border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.05)] text-slate-900 dark:text-white hover:bg-white/40 dark:hover:bg-white/10 hover:-translate-y-2 hover:scale-105 active:scale-95 transition-all duration-300 ease-out flex items-center justify-center";
 
   return (
-    <main className="relative min-h-screen text-slate-900 dark:text-white overflow-x-hidden">
+    <main className="relative min-h-[100dvh] text-slate-900 dark:text-white overflow-x-hidden">
       
+      {/* BACKGROUND: Safe from scroll-lag */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         <BlobBackground />
       </div>
@@ -24,14 +26,15 @@ export default function Home() {
       <Preloader />
 
       {/* --- LAYER 1: HERO --- */}
-      <section className="min-h-screen flex flex-col md:flex-row items-center justify-center p-6 md:p-12 lg:p-24 max-w-7xl mx-auto relative z-10 gap-8 lg:gap-16">
-        <div className="flex-1 z-10 my-auto min-w-0">
+      <section className="min-h-[100dvh] flex flex-col md:flex-row items-center justify-center p-6 md:p-24 max-w-7xl mx-auto relative z-10 gap-x-8 lg:gap-x-24">
+        
+        <div className="w-fit z-10 my-auto">
           <FadeUp delay={2.2}> 
             <TextCard>
-              <h1 className="font-hero font-black text-5xl md:text-6xl lg:text-[6rem] xl:text-[7rem] tracking-[0.1em] leading-none mb-6 shrink-0">
+              <h1 className="font-hero font-black text-5xl md:text-[7rem] tracking-[0.1em] leading-none mb-6 whitespace-nowrap">
                 Pranav Prasad
               </h1>
-              <p className="font-sans text-2xl md:text-4xl lg:text-5xl font-medium tracking-wide">
+              <p className="font-sans text-2xl md:text-5xl font-medium tracking-wide">
                 From concepts to hardware.<br />
                 Computer Science & Engineering Student.
               </p>
@@ -39,13 +42,14 @@ export default function Home() {
           </FadeUp>
         </div>
         
-        <div className="shrink-0 w-full md:w-[350px] lg:w-[400px] h-[300px] md:h-[350px] lg:h-[400px] flex items-center justify-center z-10 pointer-events-none md:pointer-events-auto">
+        {/* ROBOT */}
+        <div className="w-full md:w-[400px] h-[300px] md:h-[400px] flex items-center justify-center z-10 pointer-events-none md:pointer-events-auto">
           <CuteRobot />
         </div>
       </section>
 
       {/* --- LAYER 2: ABOUT --- */}
-      <section className="min-h-screen flex items-center justify-center p-6 md:p-24 max-w-7xl mx-auto border-t border-slate-300/30 dark:border-white/10 relative z-10">
+      <section className="min-h-[100dvh] flex items-center justify-center p-6 md:p-24 max-w-7xl mx-auto border-t border-slate-300/30 dark:border-white/10 relative z-10">
         <FadeUp className="w-full">
           <TextCard>
             <div className="flex flex-col md:flex-row gap-10 md:gap-16 items-center">
@@ -71,8 +75,8 @@ export default function Home() {
         </FadeUp>
       </section>
 
-      {/* --- LAYER 3: CONTRIBUTIONS / WORK (DIAGNOSTIC MODE) --- */}
-      <section className="min-h-screen p-6 md:p-24 max-w-7xl mx-auto border-t border-slate-300/30 dark:border-white/10 flex flex-col justify-center relative z-10">
+      {/* --- LAYER 3: CONTRIBUTIONS / WORK (BOUNCING BOXES RESTORED) --- */}
+      <section className="min-h-[100dvh] p-6 md:p-24 max-w-7xl mx-auto border-t border-slate-300/30 dark:border-white/10 flex flex-col justify-center relative z-10">
         <FadeUp>
           <div className="mb-12 ml-4">
             <span className={bubbleLabelClass}>
@@ -83,36 +87,24 @@ export default function Home() {
         
         <FadeUp delay={0.2}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full relative z-20">
-            <a href="https://github.com/Pranav-Prasad12/EduConnect" target="_blank" rel="noopener noreferrer" className="block cursor-pointer outline-none">
-              <TextCard>
-                <h3 className="text-2xl font-bold mb-2">EduConnect Platform</h3>
-                <p className="text-slate-600 dark:text-neutral-400">A complete console-based social and note-sharing ecosystem built for Kerala syllabus students.</p>
-              </TextCard>
+            <a href="https://github.com/Pranav-Prasad12/EduConnect" target="_blank" rel="noopener noreferrer" className="block cursor-pointer outline-none relative z-30">
+              <LiquidBubbleCard category="Web App" title="EduConnect Platform" description="A complete console-based social and note-sharing ecosystem built for Kerala syllabus students using Python, SQLite, and structural file management. Click to view the source code." imageSrc="/educonnect.jpg" />
             </a>
-            <a href="/split-jaw-presentation.pdf" target="_blank" rel="noopener noreferrer" className="block cursor-pointer outline-none">
-              <TextCard>
-                <h3 className="text-2xl font-bold mb-2">Project Split-Jaw</h3>
-                <p className="text-slate-600 dark:text-neutral-400">An innovative smart helmet concept featuring a custom motorized split-chin locking mechanism.</p>
-              </TextCard>
+            <a href="/split-jaw-presentation.pdf" target="_blank" rel="noopener noreferrer" className="block cursor-pointer outline-none relative z-30">
+              <LiquidBubbleCard category="IoT Hardware" title="Project Split-Jaw" description="An innovative smart helmet concept featuring a custom motorized split-chin locking mechanism and automated SOS crash detection. Click to view the concept presentation." imageSrc="/split-jaw-v2.jpg" />
             </a>
-            <a href="https://www.linkedin.com/in/pranav-prasad-5b6597323/" target="_blank" rel="noopener noreferrer" className="block cursor-pointer outline-none">
-              <TextCard>
-                <h3 className="text-2xl font-bold mb-2">Professional Achievements</h3>
-                <p className="text-slate-600 dark:text-neutral-400">Explore my latest technical certifications, milestone projects, and professional updates.</p>
-              </TextCard>
+            <a href="https://www.linkedin.com/in/pranav-prasad-5b6597323/" target="_blank" rel="noopener noreferrer" className="block cursor-pointer outline-none relative z-30">
+              <LiquidBubbleCard category="Certifications" title="Professional Achievements" description="Click here to explore my latest technical certifications, milestone projects, and professional updates directly on LinkedIn." imageSrc="/internship-cert-v2.jpg" />
             </a>
             <div className="relative z-30">
-              <TextCard>
-                <h3 className="text-2xl font-bold mb-2">Technical Foundation</h3>
-                <p className="text-slate-600 dark:text-neutral-400">Building a strong foundation in Python, Java, C, and SQL.</p>
-              </TextCard>
+              <LiquidBubbleCard category="Skills" title="Technical Foundation" description="Currently building a strong foundation in Python, Java, C, and SQL, with an active focus on learning and applying computer science concepts." imageSrc="/technical-foundation-v2.jpg" />
             </div>
           </div>
         </FadeUp>
       </section>
 
       {/* --- LAYER 4: CONTACT & FOOTER --- */}
-      <section className="min-h-screen p-6 md:p-24 max-w-7xl mx-auto border-t border-slate-300/30 dark:border-white/10 flex flex-col justify-between relative z-10">
+      <section className="min-h-[100dvh] p-6 md:p-24 max-w-7xl mx-auto border-t border-slate-300/30 dark:border-white/10 flex flex-col justify-between relative z-10">
         <FadeUp>
           <div className="mt-20 max-w-3xl">
             <TextCard>
@@ -127,7 +119,7 @@ export default function Home() {
               </h2>
               <a 
                 href="mailto:pranavkarthika12@gmail.com" 
-                className="inline-flex mt-6 w-fit px-6 py-2.5 rounded-full font-sans text-2xl md:text-3xl font-bold tracking-widest bg-slate-100/90 dark:bg-slate-800/90 border border-black/5 dark:border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.05)] text-slate-900 dark:text-white hover:bg-slate-200 dark:hover:bg-slate-700 hover:-translate-y-2 hover:scale-105 active:scale-95 transition-all duration-300 ease-out items-center justify-center relative z-20"
+                className="inline-flex mt-6 w-fit px-6 py-2.5 rounded-full font-sans text-2xl md:text-3xl font-bold tracking-widest bg-white/20 dark:bg-white/5 backdrop-blur-md border border-black/5 dark:border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.05)] text-slate-900 dark:text-white hover:bg-white/40 dark:hover:bg-white/10 hover:-translate-y-2 hover:scale-105 active:scale-95 transition-all duration-300 ease-out items-center justify-center relative z-20"
               >
                 pranavkarthika12@gmail.com
               </a>
@@ -167,6 +159,7 @@ export default function Home() {
           </div>
         </FadeUp>
       </section>
+
     </main>
   );
 }
